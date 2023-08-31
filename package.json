@@ -1,0 +1,11 @@
+{
+  "name": "pi-gabriel-tomasi---videogames",
+  "version": "1.0.0",
+  "description": "Este es el proyecto integrador de videogames",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Gabriel Tomasi",
+  "license": "ISC"
+}
