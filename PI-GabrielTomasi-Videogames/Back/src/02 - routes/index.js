@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       res.status(200).json(gamesFounded);
     }
   } catch (error) {
-    res.send(error.message);
+    console.log(error);
   }
 });
 

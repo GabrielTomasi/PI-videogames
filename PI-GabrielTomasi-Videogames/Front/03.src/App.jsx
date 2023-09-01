@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
+
 
 import LandingPage from "./01.components/01.LandingPage/landingPage";
 import Home from "./01.components/02.Home/Home";
@@ -16,7 +18,7 @@ const App = () => {
       <Routes>
       
       <Route path="/" element={<LandingPage/>}></Route>
-      <Route path="/home" element={<Home/>}></Route>
+      <Route path="/home" element={<Home />}></Route>
       <Route path="/about" element={<About/>}></Route>
       <Route path="/detail/:id" element=""></Route>
       <Route path="/fav" element=""></Route>

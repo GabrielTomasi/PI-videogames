@@ -19,6 +19,6 @@ module.exports = async () => {
 
     return allGames;
   } catch (error) {
-    res.send(error.message);
+    console.log(error.message);
   }
 };

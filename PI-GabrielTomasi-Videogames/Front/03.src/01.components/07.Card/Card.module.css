@@ -1,0 +1,17 @@
+
+.div{
+    width: 100px;
+    height: 100px;
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    
+}
+
+.img{
+    width: 75px;
+    height: 75px;
+}
+
