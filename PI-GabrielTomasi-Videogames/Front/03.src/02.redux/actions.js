@@ -1,8 +1,8 @@
-import { GETALLGAMES } from "./action-types";
+import { GETALLGAMES, SET_CURRENT_PAGE } from "./action-types";
 import axios from "axios";
+const endpoint = "http://localhost:3001/videogames/";
 
 export const gamesList = () => {
-  const endpoint = "http://localhost:3001/videogames/";
   return async (dispatch) => {
     try {
       const response = await axios.get(endpoint);
@@ -18,3 +18,10 @@ export const gamesList = () => {
     }
   };
 };
+
+export const setcurrentPage = (numPage)=>{
+  return (dispatch)=>{
+
+    return dispatch ({type:SET_CURRENT_PAGE, payload: numPage})
+  }
+}

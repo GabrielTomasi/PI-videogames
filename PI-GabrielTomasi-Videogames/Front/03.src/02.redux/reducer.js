@@ -1,8 +1,9 @@
-import { GETALLGAMES } from "./action-types";
+import { GETALLGAMES, SET_CURRENT_PAGE } from "./action-types";
 
 const initialState = {
 allGames: [],
-favGames:[]
+favGames:[],
+currentPage: 1
 }
 
 const reducer = (state = initialState, action)=>{
@@ -13,6 +14,13 @@ case GETALLGAMES:{
         allGames: action.payload
     }
 }
+case SET_CURRENT_PAGE:{
+    return{
+        ...state,
+        currentPage: action.payload
+    }
+}
+
     default:{
         return {...state}
     }
