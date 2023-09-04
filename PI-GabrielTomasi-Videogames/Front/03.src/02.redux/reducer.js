@@ -1,30 +1,33 @@
-import { GETALLGAMES, SET_CURRENT_PAGE } from "./action-types";
+import { GETALLGAMES, SET_CURRENT_PAGE, GET_GAME_BY_ID } from "./action-types";
 
 const initialState = {
-allGames: [],
-favGames:[],
-currentPage: 1
-}
+  allGames: [],
+  favGames: [],
+  currentPage: 1,
+  detail: [],
+};
 
-const reducer = (state = initialState, action)=>{
-switch (action.type){
-case GETALLGAMES:{
-    return{
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GETALLGAMES: {
+      return {
         ...state,
-        allGames: action.payload
+        allGames: action.payload,
+      };
     }
-}
-case SET_CURRENT_PAGE:{
-    return{
+    case SET_CURRENT_PAGE: {
+      return {
         ...state,
-        currentPage: action.payload
+        currentPage: action.payload,
+      };
     }
-}
-
-    default:{
-        return {...state}
+    case GET_GAME_BY_ID: {
+      return { ...state, detail: action.payload };
     }
-}
-}
+    default: {
+      return { ...state };
+    }
+  }
+};
 
 export default reducer;

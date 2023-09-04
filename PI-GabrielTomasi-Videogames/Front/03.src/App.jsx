@@ -11,6 +11,7 @@ import Home from "./01.components/02.Home/Home";
 import Nav from "./01.components/03.Nav/Nav";
 import Form from "./01.components/05.Form/Form";
 import About from "./01.components/06.About/About";
+import Detail from "./01.components/08.DetailPage/Detail";
 
 const App = () => {
   
@@ -23,7 +24,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/about" element={<About />}></Route>
-        <Route path="/detail/:id" element=""></Route>
+        <Route path="/detail/:id" element={<Detail />}></Route>
         <Route path="/fav" element=""></Route>
         <Route path="/form" element={<Form />}></Route>
         <Route path="*" element=""></Route>

@@ -1,3 +1,4 @@
 export const GETALLGAMES = "GETALLGAMES";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+export const GET_GAME_BY_ID = "GET_GAME_BY_ID"
 
