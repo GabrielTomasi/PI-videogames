@@ -9,34 +9,14 @@ module.exports = async(id) =>{
         if(isNaN(+id)){
             const dbFind = await Videogame.findOne({where:{id:id}})
             if(!dbFind) throw Error ('No se encuentra el juego en la Base de datos')
-            if(dbFind){
-                const {name,description,released,rating, background_image,platforms} = dbFind
-                return {
-                    name,
-                    description,
-                    released,
-                    rating,
-                    background_image,
-                    platforms
-                }
-            }
+            return dbFind
+            
 
         }
-// hola 
+
         const respose = await axios.get(`${URL}/${id}?key=${API_KEY}`)
         if(!respose) res.status(500).send('No se encuentra el juego en la API')
-        if (respose){
-            const {name,description,released,rating, background_image,platforms} = respose.data
-            return {
-                name,
-                description,
-                released,
-                rating,
-                background_image,
-                platforms
-            }
-            
-        }
+        return respose.data
         
     } catch (error) {
         return error.message;

@@ -1,4 +1,4 @@
-import { GETALLGAMES, SET_CURRENT_PAGE, GET_GAME_BY_ID } from "./action-types";
+import { GETALLGAMES, SET_CURRENT_PAGE, GET_GAME_BY_ID, GET_GAMES_BY_NAME } from "./action-types";
 
 const initialState = {
   allGames: [],
@@ -24,10 +24,16 @@ const reducer = (state = initialState, action) => {
     case GET_GAME_BY_ID: {
       return { ...state, detail: action.payload };
     }
+    case GET_GAMES_BY_NAME:{
+      console.log(action.payload);
+      return {...state, allGames: action.payload}  
+    }
+
     default: {
-      return { ...state };
+      return { ...state};
     }
   }
+    
 };
 
 export default reducer;

@@ -1,0 +1,16 @@
+.lp {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(21, 29, 62);
+    background-image: url(./video-games-concept-circular-colorful-linear-illustration-vector.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: inherit;
+    justify-items: center;
+    
+}
+
+.button{
+    align-items: center;
+    justify-content: center;
+}
