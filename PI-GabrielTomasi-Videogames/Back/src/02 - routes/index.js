@@ -24,20 +24,20 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/genres", async (req, res) => {
-//   try {
-//     const allGen = await getGenres();
-//     if (!allGen) throw Error("peticion fallida al buscar los generos");
+router.get("/genres", async (req, res) => {
+  try {
+    const allGen = await getGenres();
+    if (!allGen) throw Error("peticion fallida al buscar los generos");
 
-//     allGen.forEach(async (gen) => {
-//       return await Genres.findOrCreate({ where: { name: gen.name } });
-//     });
+    allGen.forEach(async (gen) => {
+      return await Genres.findOrCreate({ where: { id: gen.id, name: gen.name } });
+    });
 
-//     res.status(200).send("base de datos generada con exito");
-//   } catch (error) {
-//     res.send(error.message);
-//   }
-// });
+    res.status(200).json(allGen);
+  } catch (error) {
+    res.send(error.message);
+  }
+});
 
 
 router.get("/:id", async (req, res) => {

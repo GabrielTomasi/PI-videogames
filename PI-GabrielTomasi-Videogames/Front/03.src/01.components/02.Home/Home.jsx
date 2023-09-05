@@ -1,7 +1,7 @@
 import style from "./Home.module.css";
 import Card from "../07.Card/Card";
 import Pagination from "../09.Pagination/Pagination";
-
+import FilterOrder from "../10.FilterOrder/FilterOrder";
 const Home = ({currentGames, currentPage, totalPage, handlePageChange}) => {
   
   const renderCard = currentGames.map((game, index) => {
@@ -19,6 +19,7 @@ const Home = ({currentGames, currentPage, totalPage, handlePageChange}) => {
     <div >
     <div>
       <Pagination currentPage={currentPage} totalPage={totalPage} onPageChange={handlePageChange} />
+      <FilterOrder />
     </div>
     <div className={style.div}>
       {renderCard}

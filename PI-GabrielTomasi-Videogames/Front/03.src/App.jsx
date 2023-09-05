@@ -5,7 +5,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //import ACTIONS
-import { gamesList, setcurrentPage, searchByName } from "./02.redux/actions";
+import { gamesList, setcurrentPage, searchByName, getGenres } from "./02.redux/actions";
 //import Components
 import LandingPage from "./01.components/01.LandingPage/landingPage";
 import Home from "./01.components/02.Home/Home";
@@ -19,6 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(gamesList());
+    dispatch(getGenres())
   }, []);
 
   const allvideogames = useSelector((state) => state.allGames);
