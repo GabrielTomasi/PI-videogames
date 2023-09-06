@@ -15,12 +15,12 @@ module.exports = async (
 ) => {
   try {
     const newGame = await Videogame.create({
-      name,
-      description,
-      platforms,
-      background_image,
-      released,
-      rating,
+      name: name,
+      description: description,
+      platforms: platforms,
+      background_image: background_image,
+      released: released,
+      rating: rating,
     });
     if (!newGame) throw Error("no se hizo el jueguito");
     const newVideoGame = genres.map(async (gen) => {
@@ -28,9 +28,10 @@ module.exports = async (
         await newGame.addGenres(genDB);  
     });
     if (!newVideoGame) throw Error ('no se agrega el gen')
-    console.log(newVideoGame);
+    console.log(newGame);
     return newGame;
   } catch (error) {
     throw Error("no se agrego el juego a la lista");
   }
 };
+

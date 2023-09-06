@@ -2,7 +2,7 @@ const axios = require("axios");
 require("dotenv").config();
 const { API_KEY } = process.env;
 const URL = "https://api.rawg.io/api/games?key=";
-const { Videogame, conn } = require("../db");
+const { Videogame, Genres } = require("../db");
 
 module.exports = async () => {
   try {
@@ -12,13 +12,33 @@ module.exports = async () => {
     const result2 = response2.data.results;
     const response3 = await axios.get(`${URL}${API_KEY}&page_size=100&page=3`);
     const result3 = response3.data.results;
-    const resutlDB = await Videogame.findAll();
-    if (!response || !response2 || !response3)
-      throw Error("la api no responde");
+    const resutlDB = await Videogame.findAll({include:
+      {model: Genres,
+      as: "genres",
+      attributes: ["name"],
+      through: { attributes: [] }
+    }});
+    if (!response || !response2 || !response3) throw Error();
     const allGames = result1.concat(result2).concat(result3).concat(resutlDB);
-
-    return allGames;
+    const allGamesEstructured = allGames.map(game =>{ 
+      return {
+        id: game.id,
+        name: game.name,
+        released: game.released,
+        background_image: game.background_image,
+        rating: game.rating,
+        platforms: game.platforms.map(p => {
+          const name = p.platform.name;
+          const requirements = p.requirements;
+          console.log(requirements);
+          if (requirements) return {name:name, requirements: requirements}
+          return {name:name}
+        }),
+        genres: game.genres.map(g => g.name)
+      }
+    })
+    return allGamesEstructured;
   } catch (error) {
-    console.log(error.message);
+    throw Error (error.message)
   }
 };

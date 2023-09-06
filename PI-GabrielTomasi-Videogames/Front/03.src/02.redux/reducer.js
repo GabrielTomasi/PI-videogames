@@ -6,6 +6,7 @@ import {
   GET_GAMES_BY_NAME,
   ORDER_GAMES,
   FILTER_BY_GEN,
+  FILTER_BY_ORG
 } from "./action-types";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   allGenres: [],
   currentPage: 1,
   detail: [],
+  gamesByGen: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,13 +23,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allGames: action.payload,
+        gamesByGen: action.payload
       };
     }
-    case GETALLGENRES:{
-      return{
+    case GETALLGENRES: {
+      return {
         ...state,
-        allGenres: action.payload
-      }
+        allGenres: action.payload,
+      };
     }
     case SET_CURRENT_PAGE: {
       return {
@@ -44,19 +47,17 @@ const reducer = (state = initialState, action) => {
     }
     case ORDER_GAMES: {
       const copyGames = [...state.allGames];
-
-      console.log(copyGames[0]);
       return {
         ...state,
         allGames:
           action.payload === "A"
             ? copyGames.sort((a, b) => {
                 if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                  console.log(a.name.toLowerCase() > b.name.toLowerCase());
+                
                   return -1;
                 }
                 if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                  console.log(a.name.toLowerCase() < b.name.toLowerCase());
+          
                   return 1;
                 }
                 return 0;
@@ -83,8 +84,8 @@ const reducer = (state = initialState, action) => {
                 }
                 return 0;
               })
-            : action.payload === "ratingD" &&
-              copyGames?.sort((a, b) => {
+            : action.payload === "ratingD"
+            ? copyGames?.sort((a, b) => {
                 if (a.rating < b.rating) {
                   return -1;
                 }
@@ -92,19 +93,31 @@ const reducer = (state = initialState, action) => {
                   return 1;
                 }
                 return 0;
-              }),
+              })
+            : [...state.allGames],
       };
     }
 
     case FILTER_BY_GEN: {
+      const copyGames = [...state.allGames];
       return {
         ...state,
-        allGames:
-          action.payload === "All"
-            ? state.allGames
-            : state.allGames.filter((game) => {
-                game.genres.some(genre => genre.name === action.payload)
+        allGames: copyGames.filter((game) => {
+                return game.genres.some((gen) => {
+                  return gen === action.payload;
+                });
               }),
+        
+      };
+    }
+    case FILTER_BY_ORG: {
+      const copyGames = [...state.allGames];
+      return {
+        ...state,
+        allGames: copyGames.filter((game) => {
+                return typeof(game.id) === action.payload
+              }),
+        
       };
     }
     default: {

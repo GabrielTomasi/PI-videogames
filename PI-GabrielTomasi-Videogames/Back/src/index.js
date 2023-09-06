@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./app.js");
-
 server.listen(3001, () => {
+  ({ force: true });
   console.log("%s listening at 3001"); // eslint-disable-line no-console
 });

@@ -1,45 +1,33 @@
-import { orderGames, filterGames } from "../../02.redux/actions";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
-const FilterOrder = () => {
-  const dispatch = useDispatch();
-  const handleOrder = (event) => {
-    dispatch(orderGames(event.target.value));
-  };
-  const handlerFilter = (event) => {
-    dispatch(filterGames(event.target.value));
-  };
+const FilterOrder = ({ handleOrder, handlerFilter, handlerFilterOrg }) => {
+  const genres = useSelector((state) => state.allGenres);
   return (
     <div>
-        <label>Ordenar</label>
+      <label>Ordenar por nombre</label>
       <select onChange={handleOrder} name="Ordenar" id="Ordenar">
-      <option value="Selecciona" >Ordenar</option>
-        <option value="A">Ascendente</option>
-        <option value="D">Desendente</option>
-        <option value="ratingA">Mejor valuados</option>
-        <option value="ratingD">Peor valuados</option>
+        <option value="A">Ascendente A-Z</option>
+        <option value="D">Desendente Z-A</option>
+        <option value="">Deshacer</option>
       </select>
+      <label>Ordenar por rating</label>
+      <select onChange={handleOrder}>
+        <option value="ratingA">Mayor a menor</option>
+        <option value="ratingD">menor a mayor</option>
+        <option value="">Deshacer</option>
+      </select>
+      <label>Filtrar por genero</label>
       <select onChange={handlerFilter}>
-        <option value="Action">Action</option>
-        <option value="RPG">RPG</option>
-        <option value="Indie">Indie</option>
-        <option value="Strategy">Strategy</option>
-        <option value="Adventure">Adventure</option>
-        <option value="Shooter">Shooter</option>
-        <option value="Casual">Casual</option>
-        <option value="Simulation">Simulation</option>
-        <option value="Puzzle">Puzzle</option>
-        <option value="Arcade">Arcade</option>
-        <option value="Platformer">Platformer</option>
-        <option value="Massively Multiplayer">Massively Multiplayer</option>
-        <option value="Racing">Racing</option>
-        <option value="Fighting">Fighting</option>
-        <option value="Sports">Sports</option>
-        <option value="Family">Family</option>
-        <option value="Board Games">Board Games</option>
-        <option value="Educational">Educational</option>
-        <option value="Card">Card</option>
-        <option value="All">All</option>
+        <option value="All">Todos los juegos</option>
+        {genres.map((gen, i) => {
+          return <option key={i} value={gen.name}>{`${gen.name}`}</option>;
+        })}
+      </select>
+      <label>Filtrar por origen</label>
+      <select onChange={handlerFilterOrg}>
+        <option value="All">Todos los juegos</option>
+        <option value="string">Base de Datos</option>
+        <option value="number">API</option>
       </select>
     </div>
   );

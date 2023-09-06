@@ -2,7 +2,7 @@ const router = require("express").Router();
 const getAllGames = require("../01 - controllers/getAllGames");
 const detailGame = require("../01 - controllers/detailGame");
 const getGenres = require("../01 - controllers/getGenres");
-const { Genres, conn } = require("../db");
+const { Genres} = require("../db");
 const postGames = require("../01 - controllers/postGames");
 const findByName = require("../01 - controllers/findByName");
 
@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   try {
     if (!name) {
       const allGames = await getAllGames();
-      if (!allGames) throw Error("me rompi");
+      if (!allGames) throw Error();
       res.status(200).json(allGames);
     } else {
       const gamesFounded = await findByName(name);
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
       res.status(200).json(gamesFounded);
     }
   } catch (error) {
-    console.log(error);
+    res.status(404).json({error: error.message});
   }
 });
 
@@ -54,11 +54,11 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const {
-    name,    description,    platforms,    background_image,    released,    rating,    genres,  } = req.body;
+    name,    description,    platforms,    background_image,    released,    rating,    genres,} = req.body;
   try {
     if (      !name ||      !description ||      !platforms ||      !background_image ||      !released ||      !rating    )
       throw Error("informacion insuficiente");
-    await postGames(
+    const newGame = await postGames(
       name,
       description,
       platforms,
@@ -67,7 +67,7 @@ router.post("/", async (req, res) => {
       rating,
       genres
     );
-    res.status(200).send("Juego agregado con éxito");
+    res.status(200).json(newGame);
   } catch (error) {
     res.send(error.message);
   }
