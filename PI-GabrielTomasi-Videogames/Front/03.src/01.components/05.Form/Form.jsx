@@ -1,31 +1,33 @@
+import style from './Form.module.css'
+
 const Form = () => {
   return (
-    <form>
-      <label htmlFor="name">
+    <form className={style.form}>
+      <label htmlFor="name" className={style.formLabel}>
         Nombre del juego: <input type="text" name="name" />
       </label>
     <br/>
-      <label htmlFor="description">
-        description: <textarea name="description" />
+      <label htmlFor="description" className={style.formLabel}>
+        descripcion: <textarea name="description" className={style.formTextarea}/>
       </label>
       <br/>
      
-      <label htmlFor="released">
-        Fecha de lanzamiento: <input type="date" name="released" />
+      <label htmlFor="released" className={style.formLabel}>
+        Fecha de lanzamiento: <input type="date" name="released" className={style.formInput}/>
       </label>
       <br/>
 <p>
     Seleccionar plataformas:
-      <label htmlFor="platforms">
-        <input type="checkbox" name="platforms" value="steam" />
+      <label htmlFor="platforms" className={style.formLabel}>
+        <input type="checkbox" name="platforms" value="steam" className={style.checkboxLabel}/>
         Steam
       </label>
-      <label htmlFor="platforms">
-        <input type="checkbox" name="platforms" value="pc" />
+      <label htmlFor="platforms" className={style.formLabel}>
+        <input type="checkbox" name="platforms" value="pc" className={style.checkboxLabel}/>
         PC
       </label>
-      <label htmlFor="platforms">
-        <input type="checkbox" name="platforms" value="Consola" />
+      <label htmlFor="platforms" className={style.formLabel}>
+        <input type="checkbox" name="platforms" value="Consola" className={style.checkboxLabel}/>
         Consola
       </label>
 </p>
@@ -46,7 +48,7 @@ Seleccionar géneros:
       </label>
 
 </p>
-<button type="submit">Submit</button>
+<button type="submit" className={style.formButton}>Submit</button>
     </form>
   );
 };

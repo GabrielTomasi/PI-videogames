@@ -1,0 +1,10 @@
+body {
+  font-family: 'Outfit', sans-serif;;
+  background-color: rgb(5, 27, 58);
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -1,0 +1,32 @@
+/* Estilo para el contenedor de navegación */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007bff; /* Cambia el color de fondo según tus preferencias */
+    padding: 10px;
+  }
+  
+  /* Estilo para los botones de navegación */
+  .nav button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto hover en los botones de navegación */
+  .nav button:hover {
+    background-color: #000000;
+    border: #fff  1px solid; /* Cambia el color de fondo al pasar el mouse */
+  }
+  
+  /* Estilo para los vínculos de navegación */
+  .nav a {
+    text-decoration: none;
+  }
+  

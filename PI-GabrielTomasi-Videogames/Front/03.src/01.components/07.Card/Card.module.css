@@ -1,17 +1,47 @@
-
-.div{
-    width: 100px;
-    height: 100px;
-   
-    display: flex;
-    flex-wrap: wrap;
+.card {
+    width: 100%;
     justify-content: center;
-    justify-items: center;
-    
-}
+    max-width: 275px; /* Ajusta el ancho máximo según tus preferencias */
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+  }
+  
+  /* Efecto hover en la carta */
+  .card:hover {
+    border-radius: 5px;
+    transform: scale(1.05); /* Aumenta el tamaño de la carta al pasar el mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Estilo para la imagen */
+  .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  
+  }
+  
+  /* Estilo para el nombre */
+  .card h2 {
+    text-align: center;
+    padding: 10px;
+    color: #fff; /* Color del texto del nombre */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  /* Efecto hover en el nombre */
+  .card:hover h2 {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+  }
 
-.img{
-    width: 75px;
-    height: 75px;
-}
-
+  .card h4{
+    text-align: center;
+    padding: 10px;
+    color: #fff; /* Color del texto del nombre */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }

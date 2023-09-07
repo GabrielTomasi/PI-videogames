@@ -1,16 +1,37 @@
-.lp {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(21, 29, 62);
-    background-image: url(./video-games-concept-circular-colorful-linear-illustration-vector.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: inherit;
-    justify-items: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Ajusta esto según tus necesidades para el tamaño de la pantalla */
     
-}
+  }
 
-.button{
+  .image {
+    max-width: 100%;
+    max-height: 70vh; /* Ajusta esto según tus necesidades para el tamaño de la imagen */
+    margin-bottom: 20px; /* Espacio entre la imagen y el botón */
+  }
+  .NavLink {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+  }
+  .button {
+    padding: 10px 20px;
+    background-color: rgb(5, 27, 58); /* Color de fondo predeterminado del botón */
+    color: #fff; /* Color del texto predeterminado del botón */
+    border: solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out, transform 0.5s ease;
+    font-size: larger;
+  }
+  .button:hover {
+    background-color: rgb(0, 0, 0);
+    letter-spacing: 1px;
+    font-weight: 900;
+
+    transform: scale(1.2); /* Escala el botón al pasar el mouse */
+  }
+  /* background-color: rgb(5, 27, 58); / */

@@ -1,10 +1,11 @@
-
+import style from "./Pagination.module.css"
 const Pagination = ({currentPage, totalPage, onPageChange})=>{
 const pageNumbers = Array.from({length: totalPage}, (_,index) => index+1)
 
 return (
-    <div>
-        <button 
+    <div className={style.pagination}>
+        <button
+        className={style.li}
         onClick={()=>{onPageChange(currentPage-1)}}
         disabled={currentPage===1}
         >Preview</button>
@@ -17,6 +18,7 @@ return (
         ))}
         </div>
         <button
+        className={style.active}
         onClick={()=>{onPageChange(currentPage+1)}}
         disabled={currentPage=== totalPage}
         >Next</button>

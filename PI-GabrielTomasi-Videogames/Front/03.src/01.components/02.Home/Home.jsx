@@ -8,6 +8,7 @@ const Home = ({currentGames, currentPage, totalPage, handlePageChange, handleOrd
     return (
       <Card
         key={index}
+        id={game?.id}
         name={game?.name}
         background_image={game?.background_image}
         rating={game?.rating}
@@ -16,12 +17,12 @@ const Home = ({currentGames, currentPage, totalPage, handlePageChange, handleOrd
   });
 
   return (
-    <div >
-    <div>
+    <div className={style.homecontainer}>
+    <div className={style.homecontent}>
       <Pagination currentPage={currentPage} totalPage={totalPage} onPageChange={handlePageChange} />
       <FilterOrder handleOrder={handleOrder} handlerFilter={handlerFilter} handlerFilterOrg={handlerFilterOrg}/>
     </div>
-    <div className={style.div}>
+    <div className={style.cardcontainer}>
       {renderCard}
     </div>
     </div>

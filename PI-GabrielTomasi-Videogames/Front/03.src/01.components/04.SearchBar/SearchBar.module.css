@@ -1,0 +1,37 @@
+/* Estilo para el contenedor de la barra de búsqueda */
+.searchBar {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  /* Estilo para el campo de entrada de búsqueda */
+  .searchBar input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    flex: 1; 
+  }
+  
+  /* Estilo para el botón de búsqueda */
+  .searchBar button {
+    
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto hover en el botón de búsqueda */
+  .searchBar button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para el icono de búsqueda */
+  .searchBar i {
+    font-size: 16px;
+  }

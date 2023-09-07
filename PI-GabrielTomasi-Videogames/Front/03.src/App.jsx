@@ -16,7 +16,7 @@ import {
 } from "./02.redux/actions";
 //import Components
 
-
+import style from "./App.module.css"
 import LandingPage from "./01.components/01.LandingPage/landingPage";
 import Home from "./01.components/02.Home/Home";
 import Nav from "./01.components/03.Nav/Nav";
@@ -66,7 +66,7 @@ const App = () => {
       : dispatch(filterGamesOrg(event.target.value));
   };
   return (
-    <div className="App">
+    <div>
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
 
       <Routes>
