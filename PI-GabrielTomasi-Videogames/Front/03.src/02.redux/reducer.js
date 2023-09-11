@@ -6,12 +6,14 @@ import {
   GET_GAMES_BY_NAME,
   ORDER_GAMES,
   FILTER_BY_GEN,
-  FILTER_BY_ORG
+  FILTER_BY_ORG,
+  GETALLPLATFORMS,
 } from "./action-types";
 
 const initialState = {
   allGames: [],
   allGenres: [],
+  allPlatforms: [],
   currentPage: 1,
   detail: [],
   gamesByGen: [],
@@ -23,13 +25,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allGames: action.payload,
-        gamesByGen: action.payload
+        gamesByGen: action.payload,
       };
     }
     case GETALLGENRES: {
       return {
         ...state,
         allGenres: action.payload,
+      };
+    }
+    case GETALLPLATFORMS: {
+      return {
+        ...state,
+        allPlatforms: action.payload,
       };
     }
     case SET_CURRENT_PAGE: {
@@ -53,11 +61,9 @@ const reducer = (state = initialState, action) => {
           action.payload === "A"
             ? copyGames.sort((a, b) => {
                 if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                
                   return -1;
                 }
                 if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          
                   return 1;
                 }
                 return 0;
@@ -103,11 +109,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allGames: copyGames.filter((game) => {
-                return game.genres.some((gen) => {
-                  return gen === action.payload;
-                });
-              }),
-        
+          return game.genres.some((gen) => {
+            return gen === action.payload;
+          });
+        }),
       };
     }
     case FILTER_BY_ORG: {
@@ -115,9 +120,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allGames: copyGames.filter((game) => {
-                return typeof(game.id) === action.payload
-              }),
-        
+          return typeof game.id === action.payload;
+        }),
       };
     }
     default: {

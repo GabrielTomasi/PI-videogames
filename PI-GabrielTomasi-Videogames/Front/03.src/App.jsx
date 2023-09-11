@@ -12,7 +12,8 @@ import {
   getGenres,
   orderGames,
   filterGames,
-  filterGamesOrg
+  filterGamesOrg,
+  getPlatforms
 } from "./02.redux/actions";
 //import Components
 
@@ -40,6 +41,7 @@ const App = () => {
   useEffect(() => {
     dispatch(gamesList());
     dispatch(getGenres());
+    dispatch(getPlatforms())
   }, []);
 
   const handlePageChange = (numPage) => {

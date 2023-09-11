@@ -3,9 +3,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { detailPage } from "../../02.redux/actions";
-import style from "./Detail.module.css"
+import style from "./Detail.module.css";
 const Detail = () => {
-  
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -13,28 +12,35 @@ const Detail = () => {
     dispatch(detailPage(id));
   }, []);
   const gameDetail = useSelector((state) => state.detail);
+
   const gen = gameDetail?.genres?.map((genre) => {
     return (
       <div className={style.gameDetail}>
-        <h5 className={style.listPlatAndGen}>{genre?.name.toUpperCase()}</h5>
+        <h5 className={style.listPlatAndGen}>{genre?.name}</h5>
       </div>
     );
   });
   const plat = gameDetail?.platforms?.map((platform) => {
-   
-    const name = platform.platform.name;
-    const requirements = platform.requirements;
-   
+    let name = "";
+    if (platform.platform) name = platform.platform.name;
+    else {
+      name = platform.name;
+    }
+
     return (
       <div className={style.gameDetail}>
-        <h5 className={style.listPlatAndGen}>{name.toUpperCase()}</h5>        
+        <h5 className={style.listPlatAndGen}>{name}</h5>
       </div>
     );
   });
   return (
     <div className={style.gameDetail}>
       <h2 className={style.gameName}>{gameDetail?.name}</h2>
-      <img className={style.gameImage} src={gameDetail?.background_image} alt={gameDetail?.name} />
+      <img
+        className={style.gameImage}
+        src={gameDetail?.background_image}
+        alt={gameDetail?.name}
+      />
       <h3 className={style.gameDescription}>DESCRIPCION </h3>
       <p className={style.gameDescriptionText}>{gameDetail?.description}</p>
       <h3 className={style.gameReleased}>FECHA DE LANZAMIENTO </h3>
