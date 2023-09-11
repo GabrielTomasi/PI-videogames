@@ -2,9 +2,11 @@ const router = require("express").Router();
 const getAllGames = require("../01 - controllers/getAllGames");
 const detailGame = require("../01 - controllers/detailGame");
 const getGenres = require("../01 - controllers/getGenres");
-const { Genres} = require("../db");
+const { Genres, Platforms } = require("../db");
 const postGames = require("../01 - controllers/postGames");
 const findByName = require("../01 - controllers/findByName");
+const getPlatforms = require("../01 - controllers/getPlatforms");
+
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
@@ -20,7 +22,7 @@ router.get("/", async (req, res) => {
       res.status(200).json(gamesFounded);
     }
   } catch (error) {
-    res.status(404).json({error: error.message});
+    res.status(404).json({ error: error.message });
   }
 });
 
@@ -30,7 +32,9 @@ router.get("/genres", async (req, res) => {
     if (!allGen) throw Error("peticion fallida al buscar los generos");
 
     allGen.forEach(async (gen) => {
-      return await Genres.findOrCreate({ where: { id: gen.id, name: gen.name } });
+      return await Genres.findOrCreate({
+        where: { id: gen.id, name: gen.name },
+      });
     });
 
     res.status(200).json(allGen);
@@ -39,11 +43,28 @@ router.get("/genres", async (req, res) => {
   }
 });
 
+router.get("/platforms", async (req, res) => {
+  try {
+    const allPlatforms = await getPlatforms();
+    if(!allPlatforms) throw Error ("peticion fallida al buscar las plataformas")
 
+    allPlatforms.forEach(async (plat)=>{
+      return await Platforms.findOrCreate({
+        where:{
+          id:plat.id,
+          name:plat.name
+        }
+      })
+    })
+    res.status(200).json(allPlatforms)
+  } catch (error) {
+    res.send(error.message)
+  }
+});
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    if (!id) throw Error("Game not found");
+    if (!id) throw Error();
     const getOneGame = await detailGame(id);
     if (!getOneGame) throw Error("peticion fallida al buscar por id");
     res.json(getOneGame);
@@ -54,9 +75,23 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   const {
-    name,    description,    platforms,    background_image,    released,    rating,    genres,} = req.body;
+    name,
+    description,
+    platforms,
+    background_image,
+    released,
+    rating,
+    genres,
+  } = req.body;
   try {
-    if (      !name ||      !description ||      !platforms ||      !background_image ||      !released ||      !rating    )
+    if (
+      !name ||
+      !description ||
+      !platforms ||
+      !background_image ||
+      !released ||
+      !rating
+    )
       throw Error("informacion insuficiente");
     const newGame = await postGames(
       name,

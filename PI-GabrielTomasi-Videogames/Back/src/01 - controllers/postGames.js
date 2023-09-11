@@ -1,8 +1,4 @@
-const axios = require("axios");
-require("dotenv").config();
-const { API_KEY } = process.env;
-const URL = "http://api.rawg.io/api/genres";
-const { Videogame, conn, Genres } = require("../db");
+const { Videogame, Genres, Platforms } = require("../db");
 
 module.exports = async (
   name,
@@ -17,21 +13,27 @@ module.exports = async (
     const newGame = await Videogame.create({
       name: name,
       description: description,
-      platforms: platforms,
       background_image: background_image,
       released: released,
       rating: rating,
     });
     if (!newGame) throw Error("no se hizo el jueguito");
-    const newVideoGame = genres.map(async (gen) => {
+
+    const newGameGen = genres.map(async (gen) => {
       const genDB = await Genres.findOne({where:{name:gen}})
         await newGame.addGenres(genDB);  
     });
-    if (!newVideoGame) throw Error ('no se agrega el gen')
+
+    const newGamePlat = platforms.map(async(plat)=>{
+      const platDB = await Platforms.findOne({where:{name:plat}})
+      await newGame.addPlatforms(platDB)
+    })
+    if (!newGameGen && !newGamePlat) throw Error()
     console.log(newGame);
     return newGame;
   } catch (error) {
     throw Error("no se agrego el juego a la lista");
   }
 };
+
 

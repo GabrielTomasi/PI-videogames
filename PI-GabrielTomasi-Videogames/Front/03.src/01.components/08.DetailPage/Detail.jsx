@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { detailPage } from "../../02.redux/actions";
 import style from "./Detail.module.css"
 const Detail = () => {
+  
   const { id } = useParams();
   const dispatch = useDispatch();
 

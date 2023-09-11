@@ -1,19 +1,36 @@
+import { useState } from 'react';
 import style from './Form.module.css'
 
 const Form = () => {
+const [defineGame, setDefineGame] = useState({
+  name:"",
+  description:'',
+  released:'',
+  platforms:[],
+  genres:[]
+})
+const handleChange = (event)=>{
+const name= event.target.value
+const description= event.target.value
+const released = event.target.value
+
+}
+const handlesubmit = (event)=>{
+event.preventDefault()
+}
   return (
-    <form className={style.form}>
+    <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
-        Nombre del juego: <input type="text" name="name" />
+        Nombre del juego: <input type="text" name="name" value={defineGame.name}/>
       </label>
     <br/>
       <label htmlFor="description" className={style.formLabel}>
-        descripcion: <textarea name="description" className={style.formTextarea}/>
+        descripcion: <textarea name="description" className={style.formTextarea} value={defineGame.description}/>
       </label>
       <br/>
      
       <label htmlFor="released" className={style.formLabel}>
-        Fecha de lanzamiento: <input type="date" name="released" className={style.formInput}/>
+        Fecha de lanzamiento: <input type="date" name="released" className={style.formInput} value={defineGame.released}/>
       </label>
       <br/>
 <p>

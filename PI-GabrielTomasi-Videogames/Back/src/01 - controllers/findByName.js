@@ -2,7 +2,7 @@ const axios = require("axios");
 require("dotenv").config();
 const { API_KEY } = process.env;
 const URL = "http://api.rawg.io/api/games";
-const { Videogame, conn, Genres } = require("../db");
+const { Videogame, Genres, Platforms } = require("../db");
 const { Op } = require("sequelize");
 
 module.exports = async (name) => {
@@ -15,7 +15,6 @@ module.exports = async (name) => {
           "name",
           "background_image",
           "released",
-          "platforms",
           "rating",
         ],
         include:
@@ -23,6 +22,12 @@ module.exports = async (name) => {
           as: "genres",
           attributes: ["name"],
           through: { attributes: [] }
+        },
+        include:{
+          model: Platforms,
+          as: 'platforms',
+          attributes: ['name'],
+          through: {attributes:[]}
         }
     });
 

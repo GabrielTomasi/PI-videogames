@@ -17,10 +17,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING(5000),
       allowNull: false,
     },
-    platforms: {
-      type: DataTypes.ARRAY(DataTypes.JSONB),
-      allowNull: false,
-    },
     background_image: {
       type: DataTypes.STRING,
       allowNull: false,

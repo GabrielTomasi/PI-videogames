@@ -18,7 +18,10 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./app.js");
-server.listen(3001, () => {
-  ({ force: true });
-  console.log("%s listening at 3001"); // eslint-disable-line no-console
-});
+const { conn } = require('./db.js');
+
+conn.sync({force:true}).then(()=>{
+  server.listen(3001, () => {  console.log ("%s listening at 3001")// eslint-disable-line no-console
+  });
+
+})
