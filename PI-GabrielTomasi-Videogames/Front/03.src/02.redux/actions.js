@@ -8,6 +8,7 @@ import {
   ORDER_GAMES,
   FILTER_BY_GEN,
   FILTER_BY_ORG,
+  ADD_GAME,
 } from "./action-types";
 import axios from "axios";
 const endpoint = "http://localhost:3001/videogames/";
@@ -37,7 +38,7 @@ export const getGenres = () => {
       const result = response.data.map((genre) => {
         return { id: genre.id, name: genre.name };
       });
-   
+
       return dispatch({
         type: GETALLGENRES,
         payload: result,
@@ -54,7 +55,7 @@ export const getPlatforms = () => {
       const result = response.data.map((plat) => {
         return { id: plat.id, name: plat.name };
       });
-     
+
       return dispatch({
         type: GETALLPLATFORMS,
         payload: result,
@@ -63,7 +64,21 @@ export const getPlatforms = () => {
   };
 };
 
-
+export const addNewGame = (game) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(endpoint, game);
+      console.log(response);
+      if (!response) throw Error("no se hizo el post");
+      return dispatch({
+        type: ADD_GAME,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+  };
+};
 export const setcurrentPage = (numPage) => {
   return (dispatch) => {
     return dispatch({ type: SET_CURRENT_PAGE, payload: numPage });

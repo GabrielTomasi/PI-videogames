@@ -7,5 +7,4 @@ export const GET_GAMES_BY_NAME = "GET_GAME_BY_NAME";
 export const ORDER_GAMES = "ORDER_GAMES";
 export const FILTER_BY_GEN = "FILTER_BY_GEN";
 export const FILTER_BY_ORG = "FILTER_BY_ORG";
-
-        
+export const ADD_GAME = "ADD_GAME";

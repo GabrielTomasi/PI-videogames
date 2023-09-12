@@ -13,14 +13,14 @@ const Detail = () => {
   }, []);
   const gameDetail = useSelector((state) => state.detail);
 
-  const gen = gameDetail?.genres?.map((genre) => {
+  const gen = gameDetail?.genres?.map((genre, i) => {
     return (
-      <div className={style.gameDetail}>
+      <div key={i} className={style.gameDetail}>
         <h5 className={style.listPlatAndGen}>{genre?.name}</h5>
       </div>
     );
   });
-  const plat = gameDetail?.platforms?.map((platform) => {
+  const plat = gameDetail?.platforms?.map((platform, i ) => {
     let name = "";
     if (platform.platform) name = platform.platform.name;
     else {
@@ -28,7 +28,7 @@ const Detail = () => {
     }
 
     return (
-      <div className={style.gameDetail}>
+      <div key={i} className={style.gameDetail}>
         <h5 className={style.listPlatAndGen}>{name}</h5>
       </div>
     );
@@ -46,9 +46,9 @@ const Detail = () => {
       <h3 className={style.gameReleased}>FECHA DE LANZAMIENTO </h3>
       <p className={style.gameDescriptionText}>{gameDetail?.released}</p>
       <h3 className={style.gamePlatforms}>PLATAFORMAS</h3>
-      <p className={style.gameDescriptionText}>{plat}</p>
+      <span className={style.gameDescriptionText}>{plat}</span>
       <h3 className={style.gameGenres}>GENEROS</h3>
-      <p className={style.gameDescriptionText}>{gen}</p>
+      <span className={style.gameDescriptionText}>{gen}</span>
       <h3 className={style.gameRating}>RATING</h3>
       <p className={style.gameDescriptionText}>{gameDetail?.rating}</p>
     </div>

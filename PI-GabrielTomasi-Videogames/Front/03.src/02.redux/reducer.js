@@ -8,6 +8,7 @@ import {
   FILTER_BY_GEN,
   FILTER_BY_ORG,
   GETALLPLATFORMS,
+  ADD_GAME
 } from "./action-types";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   currentPage: 1,
   detail: [],
   gamesByGen: [],
+  gamesDB: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -124,6 +126,13 @@ const reducer = (state = initialState, action) => {
         }),
       };
     }
+    case ADD_GAME :{
+      return{
+        ...state,
+        gamesDB: action.payload
+      }
+    }
+    
     default: {
       return { ...state };
     }

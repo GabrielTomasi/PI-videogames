@@ -5,35 +5,31 @@
     align-items: center;
     margin: 20px;
     color: #fff;
+    font-size: 20px;
   }
   
   /* Estilo para las etiquetas de formulario */
-  .formLabel {
-    margin-bottom: 10px;
+  label {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    justify-content: center;
   }
   
   /* Estilo para los campos de entrada de texto y textarea */
-  .formInput,
-  .formTextarea {
+  .formInput{
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-bottom: 10px;
     width: 100%;
   }
-  
-  /* Estilo para los párrafos de opciones de checkbox */
-  p {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  /* Estilo para las etiquetas de opciones de checkbox */
-  .checkboxLabel {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    justify-content: center;
+  .formTextarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 100%;
   }
   
   /* Estilo para el botón de submit */
@@ -50,4 +46,21 @@
   /* Efecto hover en el botón de submit */
   .formButton:hover {
     background-color: #0056b3;
+  }
+
+  .containerplats{
+    display: flex;
+    flex-direction: column;
+    max-height: 200px; 
+  overflow-y: scroll;
+  justify-items: center;
+  }
+
+  details{
+    display: flex;
+    max-width: 250px;
+  }
+
+  input[type="checkbox"] {
+    margin-left: 5px;
   }

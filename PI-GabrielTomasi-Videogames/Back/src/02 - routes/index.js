@@ -74,6 +74,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  console.log(req)
   const {
     name,
     description,
