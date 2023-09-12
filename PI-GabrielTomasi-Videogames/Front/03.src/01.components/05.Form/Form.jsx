@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./Form.module.css";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { addNewGame } from "../../02.redux/actions";
 import { useDispatch } from "react-redux";
-
+import { validation } from "../../../validation";
 
 const Form = () => {
   const dispatch = useDispatch()
@@ -21,24 +21,51 @@ const Form = () => {
     genres: [],
   });
 
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+    background_image: '',
+    released: "",
+    rating: 0,
+    platforms: [],
+    genres: [],
+  })
+
+  useEffect(()=>{
+    setErrors(validation(defineGame))
+  },[defineGame])
+
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
    
-      name === "platforms"
-      ? setDefineGame({
+      if (name === "platforms"){
+        setDefineGame({
           ...defineGame,
           platforms: [...defineGame.platforms, value],
-        })
-      : name === 'genres' 
-      ? setDefineGame({ ...defineGame, genres: [...defineGame.genres, value] })
-      :setDefineGame({ ...defineGame, [name]: value })
+        }) 
+        setErrors(validation({
+          ...defineGame,
+          platforms: [...defineGame.platforms, value],
+        }))
+      }
+      
+      if (name === 'genres') {
+        setDefineGame({ ...defineGame, genres: [...defineGame.genres, value]})
+        setErrors(validation({ ...defineGame, genres: [...defineGame.genres, value]}))
+      }
+      
+      setDefineGame({ ...defineGame, [name]: value })
+      setErrors(validation({ ...defineGame, [name]: value }))
   };
   console.log(defineGame)
+
   const handlesubmit = (event) => {
     event.preventDefault()
     dispatch(addNewGame(defineGame))
   };
+
   return (
     <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
@@ -50,6 +77,8 @@ const Form = () => {
           onChange={handleChange}
         />
       </label>
+    
+      {errors.name && <span className={style.validation}>{errors.name}</span>}
       <br />
       <label htmlFor="description" className={style.formLabel}>
         Descripción
@@ -60,18 +89,20 @@ const Form = () => {
         value={defineGame.description}
         onChange={handleChange}
       />
+      
+      {errors.description && <span className={style.validation}>{errors.description}</span>}
       <br />
       <label htmlFor="background_image" className={style.formLabel}>
         Imagen
         <input
           type='url'
-         
           name="background_image"
           value={defineGame.background_image}
           onChange={handleChange}
         />
       </label>
-
+    
+      {errors.background_image && <span className={style.validation}>{errors.background_image}</span>}
       <br />
       <label htmlFor="released" className={style.formLabel}>
         Fecha de lanzamiento
@@ -83,6 +114,8 @@ const Form = () => {
           onChange={handleChange}
         />
       </label>
+     
+      {errors.released && <span className={style.validation}>{errors.released}</span>}
       <br />
       <label htmlFor="background_image" className={style.formLabel}>
         Rating
@@ -100,7 +133,6 @@ const Form = () => {
         <summary htmlFor="platforms">Seleccionar plataformas</summary>
         <div className={style.containerplats}>
           {plats?.map((p, i) => {
-            console.log(p);
             return (
               <label key={i} className={style.formLabel}>
                 {p.name}
@@ -117,13 +149,13 @@ const Form = () => {
         </div>
       </details>
 
+      
+      {errors.platforms && <span className={style.validation}>{errors.platforms}</span>}
       <br />
-
       <details>
         <summary htmlFor="platforms">Seleccionar géneros</summary>
         <div className={style.containerplats}>
           {gens?.map((p, i) => {
-            console.log(p);
             return (
               <label key={i} className={style.formLabel}>
                 {p.name}
@@ -139,7 +171,8 @@ const Form = () => {
           })}
         </div>
       </details>
-
+      {errors.genres && <span className={style.validation}>{errors.genres}</span>}
+     
       <button type="submit" className={style.formButton}>
         Submit
       </button>
