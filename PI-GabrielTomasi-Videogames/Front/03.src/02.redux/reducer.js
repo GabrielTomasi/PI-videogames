@@ -13,6 +13,7 @@ import {
 
 const initialState = {
   allGames: [],
+  copyAllGames: [],
   allGenres: [],
   allPlatforms: [],
   currentPage: 1,
@@ -27,7 +28,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allGames: action.payload,
-        gamesByGen: action.payload,
+        copyAllGames: action.payload,
       };
     }
     case GETALLGENRES: {
@@ -57,6 +58,7 @@ const reducer = (state = initialState, action) => {
     }
     case ORDER_GAMES: {
       const copyGames = [...state.allGames];
+      
       return {
         ...state,
         allGames:
@@ -73,11 +75,11 @@ const reducer = (state = initialState, action) => {
             : action.payload === "D"
             ? copyGames?.sort((a, b) => {
                 if (a.name.toLowerCase() > b.name.toLowerCase()) {
-                  console.log(a.name.toLowerCase() > b.name.toLowerCase());
+
                   return -1;
                 }
                 if (a.name.toLowerCase() < b.name.toLowerCase()) {
-                  console.log(a.name.toLowerCase() < b.name.toLowerCase());
+
                   return 1;
                 }
                 return 0;
@@ -102,28 +104,33 @@ const reducer = (state = initialState, action) => {
                 }
                 return 0;
               })
-            : [...state.allGames],
+            : state.copyAllGames
       };
+      
     }
 
     case FILTER_BY_GEN: {
       const copyGames = [...state.allGames];
+      const juegosFiltrados = copyGames.filter((game) => {
+        return game.genres.some(gen => gen === action.payload);
+      })
+
       return {
         ...state,
-        allGames: copyGames.filter((game) => {
-          return game.genres.some((gen) => {
-            return gen === action.payload;
-          });
-        }),
+        allGames: 
+        action.payload === "All"
+        ? state.copyAllGames
+        :juegosFiltrados,
       };
     }
     case FILTER_BY_ORG: {
       const copyGames = [...state.allGames];
       return {
         ...state,
-        allGames: copyGames.filter((game) => {
-          return typeof game.id === action.payload;
-        }),
+        allGames: 
+        action.payload === "All"
+        ? state.copyAllGames
+        :copyGames.filter(game => typeof game.id === action.payload),
       };
     }
     case ADD_GAME :{

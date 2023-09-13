@@ -2,24 +2,26 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import style from './FilterOrder.module.css'
 const FilterOrder = ({ handleOrder, handlerFilter, handlerFilterOrg }) => {
   const genres = useSelector((state) => state.allGenres);
+
   return (
     <div className={style.filterOrder}>
       <details>
         <summary>Filtros</summary>
-      <select onChange={handleOrder} name="Ordenar" id="Ordenar">
+        <summary>Alfabetico</summary>
+      <select onChange={handleOrder}>
+        <option value="">Deshacer</option>
         <option value="A" >Ascendente A-Z</option>
         <option value="D">Desendente Z-A</option>
-        <option value="">Deshacer</option>
       </select>
       
-      
+      <summary>Rating</summary>
       <select onChange={handleOrder}>
+        <option value="">Deshacer</option>
         <option value="ratingA">Mayor a menor</option>
         <option value="ratingD">menor a mayor</option>
-        <option value="">Deshacer</option>
       </select>
         
-        
+      <summary>Genero</summary>
         <select onChange={handlerFilter}>
         <option value="All">Todos los juegos</option>
         {genres.map((gen, i) => {
@@ -27,7 +29,7 @@ const FilterOrder = ({ handleOrder, handlerFilter, handlerFilterOrg }) => {
         })}
       </select>
          
-     
+      <summary>Origen</summary>
       <select onChange={handlerFilterOrg}>
         <option value="All">Todos los juegos</option>
         <option value="string">Base de Datos</option>

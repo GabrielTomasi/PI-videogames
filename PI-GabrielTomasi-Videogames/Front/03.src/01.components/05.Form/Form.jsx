@@ -62,14 +62,13 @@ const Form = () => {
   console.log(defineGame)
 
   const handlesubmit = (event) => {
-    event.preventDefault()
     dispatch(addNewGame(defineGame))
   };
 
   return (
     <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
-        Nombre del juego
+        Game Name
         <input
           type="text"
           name="name"
@@ -81,7 +80,7 @@ const Form = () => {
       {errors.name && <span className={style.validation}>{errors.name}</span>}
       <br />
       <label htmlFor="description" className={style.formLabel}>
-        Descripción
+        Description
       </label>
       <textarea
         name="description"
@@ -93,7 +92,7 @@ const Form = () => {
       {errors.description && <span className={style.validation}>{errors.description}</span>}
       <br />
       <label htmlFor="background_image" className={style.formLabel}>
-        Imagen
+        Image
         <input
           type='url'
           name="background_image"
@@ -105,7 +104,7 @@ const Form = () => {
       {errors.background_image && <span className={style.validation}>{errors.background_image}</span>}
       <br />
       <label htmlFor="released" className={style.formLabel}>
-        Fecha de lanzamiento
+        Release Date
         <input
           type="date"
           name="released"
@@ -130,7 +129,7 @@ const Form = () => {
         />
       </label>
       <details>
-        <summary htmlFor="platforms">Seleccionar plataformas</summary>
+        <summary htmlFor="platforms">Platforms</summary>
         <div className={style.containerplats}>
           {plats?.map((p, i) => {
             return (
@@ -153,7 +152,7 @@ const Form = () => {
       {errors.platforms && <span className={style.validation}>{errors.platforms}</span>}
       <br />
       <details>
-        <summary htmlFor="platforms">Seleccionar géneros</summary>
+        <summary htmlFor="platforms">Genres</summary>
         <div className={style.containerplats}>
           {gens?.map((p, i) => {
             return (

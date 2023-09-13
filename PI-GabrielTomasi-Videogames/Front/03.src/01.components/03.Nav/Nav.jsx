@@ -9,7 +9,6 @@ const Nav = ({onSearch})=>{
             {location.pathname === '/home' && (<SearchBar onSearch={onSearch}/>)}
             <NavLink to='/home'><button>Home</button></NavLink>
             <NavLink to='/about'><button>About</button></NavLink>
-            <NavLink to='/fav'><button>My Favorites</button></NavLink>
             <NavLink to='/form'><button>Add your Game</button></NavLink>
         </nav>
     )

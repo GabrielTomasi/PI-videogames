@@ -7,10 +7,11 @@ const {Platforms} = require("../db");
 module.exports = async() =>{
     try {
         const respose = await axios.get(`${URL}?key=${API_KEY}`)
+        if(!respose) throw Error ("no se cargaron las plataformas")
         console.log(respose.data.results);
         return respose.data.results
       
     } catch (error) {
-       return error.message;
+        throw Error (error.message)
     }
 }

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 import style from '../01.LandingPage/LandingPage.module.css'
-import image from '../01.LandingPage/video-games-concept-circular-colorful-linear-illustration-vector.jpg'
+import image from '../01.LandingPage/WallpaperDog-20525189.jpg'
 const LandingPage = ()=>{
     return(
         <div className={style.conteiner}>

@@ -17,9 +17,11 @@
   .filterOrder summary {
     content: none;
     background-color: #007bff;
+    border: solid  #ffffff80 1px;
     color: #fff;
     padding: 5px 10px;
     border-radius: 50%;
+    
     cursor: pointer;
     transition: background-color 0.7s ease;
     display: flex;
@@ -30,7 +32,8 @@
  
   .filterOrder summary::before {
     font-size: 2em;
-    transition: background-color 0.7s ease;
+  
+    transition: background-color 2s ease;
   }
   
 

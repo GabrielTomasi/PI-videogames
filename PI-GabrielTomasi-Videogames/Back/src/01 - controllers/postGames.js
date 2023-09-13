@@ -28,11 +28,11 @@ module.exports = async (
       const platDB = await Platforms.findOne({where:{name:plat}})
       await newGame.addPlatforms(platDB)
     })
-    if (!newGameGen && !newGamePlat) throw Error()
+    if (!newGameGen && !newGamePlat) throw Error("no se hizo el jueguito")
     console.log(newGame);
     return newGame;
   } catch (error) {
-    throw Error("no se agrego el juego a la lista");
+    throw Error (error.message)
   }
 };
 

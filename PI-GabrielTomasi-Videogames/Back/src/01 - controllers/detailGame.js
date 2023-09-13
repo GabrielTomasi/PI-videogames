@@ -34,6 +34,6 @@ module.exports = async (id) => {
         return respose.data;
     }
   } catch (error) {
-    return error.message;
+    throw Error (error.message)
   }
 };

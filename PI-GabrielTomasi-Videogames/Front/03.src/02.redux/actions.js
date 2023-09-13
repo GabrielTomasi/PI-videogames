@@ -25,7 +25,7 @@ export const gamesList = () => {
         payload: result,
       });
     } catch (error) {
-      console.log(error.message);
+     windows.alert(error.message);
     }
   };
 };
@@ -43,7 +43,9 @@ export const getGenres = () => {
         type: GETALLGENRES,
         payload: result,
       });
-    } catch (error) {}
+    } catch (error) {
+      windows.alert(error.message)
+    }
   };
 };
 
@@ -60,7 +62,9 @@ export const getPlatforms = () => {
         type: GETALLPLATFORMS,
         payload: result,
       });
-    } catch (error) {}
+    } catch (error) {
+      windows.alert(error.message)
+    }
   };
 };
 
@@ -75,7 +79,7 @@ export const addNewGame = (game) => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error.message)
+      windows.alert(error.message)
     }
   };
 };
@@ -96,7 +100,7 @@ export const detailPage = (id) => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error.message);
+      windows.alert(error.message);
     }
   };
 };
@@ -110,7 +114,7 @@ export const searchByName = (name) => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error.message);
+      windows.alert(error.message);
     }
   };
 };

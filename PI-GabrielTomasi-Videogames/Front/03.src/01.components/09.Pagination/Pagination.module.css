@@ -26,6 +26,6 @@
   }
 
   .pagination button[disabled] {
-    background-color: #000000;
-    
+    background-color:#fffbfb;
+    color: #0056b3;
   }

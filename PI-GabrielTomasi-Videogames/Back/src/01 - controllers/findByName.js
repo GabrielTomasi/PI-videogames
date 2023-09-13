@@ -45,8 +45,7 @@ module.exports = async (name) => {
 
     return allGamesFound;
   } catch (error) {
-    console.log(error.message);
-    throw Error("game not found");
+    throw Error (error.message)
   }
 };
 

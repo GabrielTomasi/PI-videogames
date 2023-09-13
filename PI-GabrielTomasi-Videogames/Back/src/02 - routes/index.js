@@ -19,10 +19,10 @@ router.get("/", async (req, res) => {
       const gamesFounded = await findByName(name);
       if (!gamesFounded) throw Error("No se encontró ninguna coincidencia");
 
-      res.status(200).json(gamesFounded);
+      return res.status(200).json(gamesFounded);
     }
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    return res.status(500).json({error: error.message})
   }
 });
 
@@ -37,9 +37,9 @@ router.get("/genres", async (req, res) => {
       });
     });
 
-    res.status(200).json(allGen);
+    return res.status(200).json(allGen);
   } catch (error) {
-    res.send(error.message);
+    return res.status(500).json({error: error.message})
   }
 });
 
@@ -56,9 +56,9 @@ router.get("/platforms", async (req, res) => {
         }
       })
     })
-    res.status(200).json(allPlatforms)
+    return res.status(200).json(allPlatforms)
   } catch (error) {
-    res.send(error.message)
+    return res.status(500).json({error: error.message})
   }
 });
 router.get("/:id", async (req, res) => {
@@ -67,9 +67,9 @@ router.get("/:id", async (req, res) => {
     if (!id) throw Error();
     const getOneGame = await detailGame(id);
     if (!getOneGame) throw Error("peticion fallida al buscar por id");
-    res.json(getOneGame);
+    return res.status(200).json(getOneGame);
   } catch (error) {
-    res.send(error.message);
+    return res.status(500).json({error: error.message})
   }
 });
 
@@ -103,9 +103,9 @@ router.post("/", async (req, res) => {
       rating,
       genres
     );
-    res.status(200).json(newGame);
+    return res.status(200).json(newGame);
   } catch (error) {
-    res.send(error.message);
+    return res.status(500).json({error: error.message})
   }
 });
 
