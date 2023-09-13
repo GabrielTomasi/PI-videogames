@@ -6,33 +6,33 @@ const FilterOrder = ({ handleOrder, handlerFilter, handlerFilterOrg }) => {
   return (
     <div className={style.filterOrder}>
       <details>
-        <summary>Filtros</summary>
-        <summary>Alfabetico</summary>
+        <summary>Filters</summary>
+        <summary>By name</summary>
       <select onChange={handleOrder}>
-        <option value="">Deshacer</option>
-        <option value="A" >Ascendente A-Z</option>
-        <option value="D">Desendente Z-A</option>
+        <option value="">X</option>
+        <option value="A" >A-Z</option>
+        <option value="D">Z-A</option>
       </select>
       
       <summary>Rating</summary>
       <select onChange={handleOrder}>
-        <option value="">Deshacer</option>
-        <option value="ratingA">Mayor a menor</option>
-        <option value="ratingD">menor a mayor</option>
+        <option value="">X</option>
+        <option value="ratingA">Highest first</option>
+        <option value="ratingD">Lowest first </option>
       </select>
         
-      <summary>Genero</summary>
+      <summary>Genres</summary>
         <select onChange={handlerFilter}>
-        <option value="All">Todos los juegos</option>
+        <option value="All">X</option>
         {genres.map((gen, i) => {
           return <option key={i} value={gen.name}>{`${gen.name}`}</option>;
         })}
       </select>
          
-      <summary>Origen</summary>
+      <summary>Origin</summary>
       <select onChange={handlerFilterOrg}>
-        <option value="All">Todos los juegos</option>
-        <option value="string">Base de Datos</option>
+        <option value="All">X</option>
+        <option value="string">DataBase</option>
         <option value="number">API</option>
       </select>
       </details>

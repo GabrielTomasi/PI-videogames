@@ -1,71 +1,68 @@
-/* Estilo para el contenedor del detalle del juego */
-.gameDetail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-    color: aliceblue;
 
-  }
-  
-  /* Estilo para el nombre del juego */
-  .gameName {
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Estilo para la imagen del juego */
-  .gameImage {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo para la descripción del juego */
-  .gameDescription {
-    font-size: 20px;
-    margin-bottom: 10px;
 
-  }
-  
-  /* Estilo para el texto de la descripción del juego */
-  .gameDescriptionText {
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 10px;
+.detailContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
 
-    
-  }
-  
-  /* Estilo para la fecha de lanzamiento del juego */
-  .gameReleased {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo para las plataformas del juego */
-  .gamePlatforms {
-    font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: -50px;
-   
-  }
-  
-  /* Estilo para los géneros del juego */
-  .gameGenres {
-    font-size: 20px;
-    margin-bottom: -50px;
-  }
-  
-  /* Estilo para la calificación del juego */
-  .gameRating {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
+.detailContainer h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 20px; /* Espacio entre el título y el contenido */
+}
 
-  .listPlatAndGen{
-    font-size: 16px;
-    text-align: center;
-    
-  }
+.detailContainer img {
+  max-width: 100%;
+  height: auto;
+}
+
+.detailContainer .leftSection {
+  
+  flex: 1;
+  margin-right: 20px;
+}
+.detailContainer .leftSection h3 {
+  color: white;
+
+}
+
+.detailContainer .leftSection p {
+  color: white;
+}
+.detailContainer .rightSection {
+ 
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.detailContainer .rightSection h3 {
+  align-self: center;
+  color: white;
+}
+.detailContainer .rightSection p {
+  color: white;
+}
+.detailContainer .platformGenreList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detailContainer .platformGenreItem {
+
+  background-color: #333;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.detailContainer .rightSection h3,
+.detailContainer .leftSection h3 {
+  text-align: center;
+  margin-top: 20px; 
+}
