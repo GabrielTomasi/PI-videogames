@@ -66,7 +66,6 @@ const Home = ({ handlePageChange }) => {
 
   return (
     <div className={style.homecontainer}>
-      <div className={style.cardcontainer}>{renderCard} </div>
       <div className={style.homecontent}>
         <Pagination
           currentPage={currentPage}
@@ -79,6 +78,7 @@ const Home = ({ handlePageChange }) => {
           handlerFilterOrg={handlerFilterOrg}
         />
       </div>
+      <div className={style.cardcontainer}>{renderCard} </div>
     </div>
   );
 };

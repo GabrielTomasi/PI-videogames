@@ -56,9 +56,9 @@ const Detail = () => {
           <h3>GENERES</h3>
           <div className={style.platformGenreList}>{gen}</div>
         </div>
-        <div>
+        <div >
           <h3>RATING</h3>
-          <p>{gameDetail?.rating}</p>
+          <p >{gameDetail?.rating}</p>
         </div>
       </div>
     </div>

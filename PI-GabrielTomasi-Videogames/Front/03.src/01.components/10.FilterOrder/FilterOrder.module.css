@@ -36,7 +36,7 @@
   .filterOrder summary::before {
     font-size: 2em;
   
-    transition: background-color 2s ease;
+    transition: background-color 0.3s ease;
   }
   
 

@@ -6,30 +6,30 @@ const { Genres, Platforms } = require("../db");
 const postGames = require("../01 - controllers/postGames");
 const findByName = require("../01 - controllers/findByName");
 const getPlatforms = require("../01 - controllers/getPlatforms");
-
+const deleteGame = require('../01 - controllers/deleteGame')
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
   try {
     if (!name) {
       const allGames = await getAllGames();
-      if (!allGames) throw Error();
+      if (!allGames) res.status(500).send('no se cargaron los juegos');
       res.status(200).json(allGames);
     } else {
       const gamesFounded = await findByName(name);
-      if (!gamesFounded) throw Error("No se encontró ninguna coincidencia");
+      if (!gamesFounded) res.status(400).send("No se encontró ninguna coincidencia");
 
       return res.status(200).json(gamesFounded);
     }
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
 });
 
 router.get("/genres", async (req, res) => {
   try {
     const allGen = await getGenres();
-    if (!allGen) throw Error("peticion fallida al buscar los generos");
+    if (!allGen) res.status(500).send("peticion fallida al buscar los generos");
 
     allGen.forEach(async (gen) => {
       return await Genres.findOrCreate({
@@ -39,42 +39,43 @@ router.get("/genres", async (req, res) => {
 
     return res.status(200).json(allGen);
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
 });
 
 router.get("/platforms", async (req, res) => {
   try {
     const allPlatforms = await getPlatforms();
-    if(!allPlatforms) throw Error ("peticion fallida al buscar las plataformas")
-
-    allPlatforms.forEach(async (plat)=>{
-      return await Platforms.findOrCreate({
-        where:{
-          id:plat.id,
-          name:plat.name
-        }
-      })
-    })
-    return res.status(200).json(allPlatforms)
+    if (!allPlatforms) res.status(500).send("Peticion fallida al buscar las plataformas");
+    // allPlatforms.forEach(async (plat) => {
+    
+    //   return await Platforms.findOrCreate({
+    //     where: {
+    //       id: plat.id,
+    //       name: plat.name,
+    //     },
+    //   });
+    // });
+    res.status(200).json(allPlatforms);
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    res.status(500).send("Peticion fallida al buscar las plataformas");
   }
 });
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
+  
   try {
-    if (!id) throw Error();
+    if (!id) res.status(400).send("información insuficiente");
     const getOneGame = await detailGame(id);
-    if (!getOneGame) throw Error("peticion fallida al buscar por id");
+    if (!getOneGame) res.status(500).send("Peticion fallida al buscar por id");
     return res.status(200).json(getOneGame);
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
 });
 
 router.post("/", async (req, res) => {
-  console.log(req)
+  console.log(req);
   const {
     name,
     description,
@@ -93,7 +94,7 @@ router.post("/", async (req, res) => {
       !released ||
       !rating
     )
-      throw Error("informacion insuficiente");
+      res.status(400).send("informacion insuficiente");
     const newGame = await postGames(
       name,
       description,
@@ -105,8 +106,24 @@ router.post("/", async (req, res) => {
     );
     return res.status(200).json(newGame);
   } catch (error) {
-    return res.status(500).json({error: error.message})
+    return res.status(500).json({ error: error.message });
   }
+});
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log(req.params);
+  try {
+    if (!id || typeof id !== "string") res.status(400).send("Game not found")
+
+  const gameDeleted = [await deleteGame(id)];
+  console.log(gameDeleted);
+  res.status(200).json(gameDeleted)
+  } catch (error) {
+    res.status(500).json(error.message)
+  }
+  
+  
 });
 
 module.exports = router;

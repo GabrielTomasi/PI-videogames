@@ -3,22 +3,22 @@ export const validation = ({name, description, background_image, released, ratin
  const descripcionRegex = /^(.|\s)*[a-zA-Z]+(.|\s)*$/g
  const imageRegex = /(?:(?:https?)+\:\/\/+[a-zA-Z0-9\/\._-]{1,})+(?:(?:jpe?g|png|gif|bmp|webp|pna|tiff|svg))/gsim
 //validaciones nombre
-if(!descripcionRegex.test(name)) errors.name = 'no puede incluir solo numeros o caracteres especiales'
-if(name.length<5 || name.length>30) errors.name = "Debe ser menor a 30 caracteres"
-if(!name) errors.name = 'Debe incluir el nombre del juego'
+if(!descripcionRegex.test(name)) errors.name = 'Cannot include only numbers or special characters'
+if(name.length<5 || name.length>30) errors.name = "Must be less than 30 characters"
+if(!name) errors.name = 'Must include the name of the game'
 //validaciones descripcion
-if(descripcionRegex.test(description)) errors.description = 'no puede incluir solo numeros o caracteres especiales'
-if(description.length<20 || description.length>200) errors.description = 'La descripcion debe incluir entre 20 y 200 caracteres'
-if(!description) errors.description = 'Debe incluir una descripcion'
+if(descripcionRegex.test(description)) errors.description = 'Cannot include only numbers or special characters'
+if(description.length<20 || description.length>500) errors.description = 'The description must include between 20 and 500 characters'
+if(!description) errors.description = 'Must include a description'
 //validaciones imagen
-if(!imageRegex.test(background_image)) errors.background_image = "Debe incluir una direccion valida"
-if(!background_image) errors.background_image = 'Debe incluir una url de una imagen'
+if(!imageRegex.test(background_image)) errors.background_image = "Must include a valid address"
+if(!background_image) errors.background_image = 'Must include an image url'
 //validaciones fecha
-if(!released) errors.released = 'Debe incluir una fecha de lanzamiento'
-if(rating<1 && rating > 5)errors.rating = 'el rating debe ser entre 0 y 5'
-if(!rating) errors.rating = 'Debe incluir el rating del juego'
-if(!platforms.length) errors.platforms = "Debe incluir al menos una plataforma"
-if(!genres.length) errors.genres = "Debe incluir al menos un genero"
+if(!released) errors.released = 'Must include a release date'
+if(rating<1 && rating > 5)errors.rating = 'The rating must be between 0 and 5'
+if(!rating) errors.rating = 'Must include game rating'
+if(!platforms.length) errors.platforms = "Must include at least one platform"
+if(!genres.length) errors.genres = "Must include at least one genre"
  return errors
 }
 

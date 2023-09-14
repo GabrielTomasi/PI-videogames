@@ -11,7 +11,7 @@ import {
   ADD_GAME,
 } from "./action-types";
 import axios from "axios";
-const endpoint = "http://localhost:3001/videogames/";
+const endpoint = "http://localhost:3001/videogames";
 
 export const gamesList = () => {
   return async (dispatch) => {
@@ -53,7 +53,8 @@ export const getPlatforms = () => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`${endpoint}/platforms`);
-      if (!response) throw Error("No se trajeron las plataformas");
+      if (!response) Window.alert("No se trajeron las plataformas");
+      console.log(response);
       const result = response.data.map((plat) => {
         return { id: plat.id, name: plat.name };
       });
@@ -63,7 +64,7 @@ export const getPlatforms = () => {
         payload: result,
       });
     } catch (error) {
-      windows.alert(error.message)
+      console.log(error.message)
     }
   };
 };
@@ -79,7 +80,7 @@ export const addNewGame = (game) => {
         payload: response.data,
       });
     } catch (error) {
-      windows.alert(error.message)
+      window.alert(error.message)
     }
   };
 };
@@ -92,7 +93,7 @@ export const setcurrentPage = (numPage) => {
 export const detailPage = (id) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get(`${endpoint}${id}`);
+      const response = await axios.get(`${endpoint}/${id}`);
 
       if (!response.data) throw Error("No se hizo la peticion");
       return dispatch({
@@ -100,7 +101,7 @@ export const detailPage = (id) => {
         payload: response.data,
       });
     } catch (error) {
-      windows.alert(error.message);
+      window.alert(error.message);
     }
   };
 };

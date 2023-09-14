@@ -7,7 +7,6 @@ module.exports = async () => {
   try {
     const respose = await axios.get(`${URL}?key=${API_KEY}`);
     if (!respose) throw Error("la api no responde");
-    console.log(respose.data.results);
     return respose.data.results;
   } catch (error) {
     throw Error(error.message);

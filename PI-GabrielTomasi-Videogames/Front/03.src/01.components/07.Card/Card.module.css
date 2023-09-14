@@ -8,6 +8,7 @@
     margin: 0px, 20px, 20px, 20px;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.539);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+    margin-left: 50px;
   }
   
   /* Efecto hover en la carta */
