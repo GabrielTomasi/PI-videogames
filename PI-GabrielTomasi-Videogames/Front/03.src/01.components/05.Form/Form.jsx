@@ -51,17 +51,19 @@ const Form = () => {
         }))
       }
       
-      if (name === 'genres') {
+      else if (name === 'genres') {
         setDefineGame({ ...defineGame, genres: [...defineGame.genres, value]})
         setErrors(validation({ ...defineGame, genres: [...defineGame.genres, value]}))
       }
-      
-      setDefineGame({ ...defineGame, [name]: value })
-      setErrors(validation({ ...defineGame, [name]: value }))
+      else{
+        setDefineGame({ ...defineGame, [name]: value })
+        setErrors(validation({ ...defineGame, [name]: value }))
+
+      }
   };
   console.log(defineGame)
 
-  const handlesubmit = (event) => {
+  const handlesubmit = () => {
     dispatch(addNewGame(defineGame))
   };
 

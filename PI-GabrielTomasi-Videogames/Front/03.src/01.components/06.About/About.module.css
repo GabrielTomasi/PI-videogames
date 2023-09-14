@@ -1,0 +1,28 @@
+.conteiner{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    text-align: center;
+    background-image: url(../../assets/wallpaperflare.com_wallpaper1.jpg);
+}
+
+.img{
+    width: 500px;
+    height:fit-content;
+}
+
+h2{
+   
+    
+    font-size: 50px;
+    text-align: center;
+   
+}
+
+.textconteiner{
+    flex: 1;
+    font-size: 25px;
+    text-align: right;
+    padding: 50px;
+}

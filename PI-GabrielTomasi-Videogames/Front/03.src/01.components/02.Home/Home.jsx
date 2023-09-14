@@ -31,6 +31,7 @@ const Home = ({ handlePageChange }) => {
         console.log(err.message);
       });
   }, []);
+
   const currentPage = useSelector((state) => state.currentPage);
   const gamesPerPage = 15;
   const totalPage = Math.ceil(allGames.length / gamesPerPage);
@@ -65,6 +66,7 @@ const Home = ({ handlePageChange }) => {
 
   return (
     <div className={style.homecontainer}>
+      <div className={style.cardcontainer}>{renderCard} </div>
       <div className={style.homecontent}>
         <Pagination
           currentPage={currentPage}
@@ -77,7 +79,6 @@ const Home = ({ handlePageChange }) => {
           handlerFilterOrg={handlerFilterOrg}
         />
       </div>
-      <div className={style.cardcontainer}>{renderCard} </div>
     </div>
   );
 };

@@ -8,7 +8,6 @@ import {
   setcurrentPage,
   searchByName,
   getGenres,
-  
   getPlatforms,
 } from "./02.redux/actions";
 //import Components
@@ -24,24 +23,17 @@ const App = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-  
     dispatch(getGenres());
     dispatch(getPlatforms());
   }, []);
 
-  const handlePageChange = (numPage) => {
-    //seteadora de paginas: maneja la pag actual despachando la action que
-    dispatch(setcurrentPage(numPage)); //genera la nueva pagina
-  };
+  const handlePageChange = (numPage) => dispatch(setcurrentPage(numPage));
 
   const onSearch = (name) => {
-    name === ""
-    ?dispatch(gamesList())
-    :dispatch(searchByName(name));
+    name === "" ? dispatch(gamesList()) : dispatch(searchByName(name));
   };
-  
+
   return (
     <div>
       {location.pathname !== "/" && <Nav onSearch={onSearch} />}
@@ -50,12 +42,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />}></Route>
         <Route
           path="/home"
-          element={
-            <Home
-              handlePageChange={handlePageChange}
-              
-            />
-          }
+          element={<Home handlePageChange={handlePageChange} />}
         ></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/detail/:id" element={<Detail />}></Route>
