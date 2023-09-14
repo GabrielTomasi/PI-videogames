@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+
 router.get("/genres", async (req, res) => {
   try {
     const allGen = await getGenres();
@@ -47,15 +48,7 @@ router.get("/platforms", async (req, res) => {
   try {
     const allPlatforms = await getPlatforms();
     if (!allPlatforms) res.status(500).send("Peticion fallida al buscar las plataformas");
-    // allPlatforms.forEach(async (plat) => {
-    
-    //   return await Platforms.findOrCreate({
-    //     where: {
-    //       id: plat.id,
-    //       name: plat.name,
-    //     },
-    //   });
-    // });
+
     res.status(200).json(allPlatforms);
   } catch (error) {
     res.status(500).send("Peticion fallida al buscar las plataformas");

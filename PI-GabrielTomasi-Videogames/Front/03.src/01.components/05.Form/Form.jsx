@@ -4,13 +4,15 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { addNewGame } from "../../02.redux/actions";
 import { useDispatch } from "react-redux";
 import { validation } from "../../../validation";
-
+import { useNavigate } from "react-router-dom";
 const Form = () => {
+  const navigate = useNavigate()
+ 
   const dispatch = useDispatch()
   const plats = useSelector((state) => state.allPlatforms);
   const gens = useSelector((state) => state.allGenres);
-
-  console.log(plats);
+  const allGames = useSelector((state)=>state.allGames)
+  console.log(allGames);
   const [defineGame, setDefineGame] = useState({
     name: "",
     description: "",
@@ -32,7 +34,7 @@ const Form = () => {
   })
 
   useEffect(()=>{
-    setErrors(validation(defineGame))
+    setErrors(validation(defineGame, allGames))
   },[defineGame])
 
 
@@ -65,8 +67,10 @@ const Form = () => {
 
   const handlesubmit = () => {
     dispatch(addNewGame(defineGame))
-  };
+    navigate('/home')
 
+  };
+  console.log(errors);
   return (
     <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
@@ -173,10 +177,12 @@ const Form = () => {
         </div>
       </details>
       {errors.genres && <span className={style.validation}>{errors.genres}</span>}
-     
-      <button type="submit" className={style.formButton}>
+     {
+      
+      !errors.name && !errors.description && !errors.genres && !errors.platforms && !errors.released && !errors.background_image && <button type="submit" className={style.formButton}>
         Submit
       </button>
+     }
     </form>
   );
 };
