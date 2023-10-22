@@ -17,11 +17,11 @@ if(descripcionRegex.test(description)) errors.description = 'Cannot include only
 if(description.length<20 || description.length>500) errors.description = 'The description must include between 20 and 500 characters'
 if(!description) errors.description = 'Must include a description'
 //validaciones imagen
-if(!imageRegex.test(background_image)) errors.background_image = "Must include a valid address"
-if(!background_image) errors.background_image = 'Must include an image url'
+// if(!imageRegex.test(background_image)) errors.background_image = "Must include a valid address"
+// if(!background_image) errors.background_image = 'Must include an image url'
 //validaciones fecha
 if(!released) errors.released = 'Must include a release date'
-if(rating<1 && rating > 5)errors.rating = 'The rating must be between 0 and 5'
+if(rating<1 || rating > 5)errors.rating = 'The rating must be between 0 and 5'
 if(!rating) errors.rating = 'Must include game rating'
 if(!platforms.length) errors.platforms = "Must include at least one platform"
 if(!genres.length) errors.genres = "Must include at least one genre"

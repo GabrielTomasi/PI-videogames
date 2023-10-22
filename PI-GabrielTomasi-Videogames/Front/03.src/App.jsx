@@ -14,7 +14,6 @@ import {
 
 import LandingPage from "./01.components/01.LandingPage/landingPage";
 import Home from "./01.components/02.Home/Home";
-import Nav from "./01.components/03.Nav/Nav";
 import Form from "./01.components/05.Form/Form";
 import About from "./01.components/06.About/About";
 import Detail from "./01.components/08.DetailPage/Detail";
@@ -30,14 +29,8 @@ const App = () => {
 
   const handlePageChange = (numPage) => dispatch(setcurrentPage(numPage));
 
-  const onSearch = (name) => {
-    name === "" ? dispatch(gamesList()) : dispatch(searchByName(name));
-  };
-
   return (
     <div>
-      {location.pathname !== "/" && <Nav onSearch={onSearch} />}
-
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route

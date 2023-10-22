@@ -1,32 +1,60 @@
 /* Estilo para el contenedor de navegación */
 .nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #007bff; /* Cambia el color de fondo según tus preferencias */
-    padding: 10px;
-  }
-  
-  /* Estilo para los botones de navegación */
-  .nav button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin: 0 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Efecto hover en los botones de navegación */
-  .nav button:hover {
-    background-color: #000000;
-    border: #fff  1px solid; /* Cambia el color de fondo al pasar el mouse */
-  }
-  
-  /* Estilo para los vínculos de navegación */
-  .nav a {
-    text-decoration: none;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navconteiner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  width: 645px;
+  height: 20px;
+}
+
+.SearchBar {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: small;
+  margin-left: 10px;
+}
+
+.buttonconteiner {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin: 10px;
+  border-radius: 12px;
+  width: auto;
+  height: inherit;
+}
+.linkbutton {
+  display: flex;
+  justify-self: center;
+  height: 100%;
+  background-color: #007bff;
+  color: #fff;
+  margin: 10px;
+  border: none;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: initial;
+}
+
+.linkbutton:hover {
+  background-color: #000000;
+  border: #fff 1px solid;
+}
+.linkbutton.active {
+  background-color: #000000;
+  border: #fff 1px solid;
+}
+
+.nav a {
+  text-decoration: none;
+}

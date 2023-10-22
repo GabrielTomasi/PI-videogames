@@ -1,44 +1,35 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import style from './FilterOrder.module.css'
+import style from "./FilterOrder.module.css";
 const FilterOrder = ({ handleOrder, handlerFilter, handlerFilterOrg }) => {
   const genres = useSelector((state) => state.allGenres);
 
   return (
     <div className={style.filterOrder}>
-      <details>
-        <summary>Filters</summary>
-        <summary>By name</summary>
+<h2>ORDER</h2>
       <select onChange={handleOrder}>
-        <option value="">X</option>
-        <option value="A" >A-Z</option>
+        <option value="">order by Name</option>
+        <option value="A">A-Z</option>
         <option value="D">Z-A</option>
       </select>
-      
-      <summary>Rating</summary>
+
       <select onChange={handleOrder}>
-        <option value="">X</option>
+        <option value="">order by Rating</option>
         <option value="ratingA">Highest first</option>
         <option value="ratingD">Lowest first </option>
       </select>
-        
-      <summary>Genres</summary>
-        <select onChange={handlerFilter}>
-        <option value="All">X</option>
+      <h2>FILTER</h2>
+      <select onChange={handlerFilter}>
+        <option value="All">Filter by Genres</option>
         {genres.map((gen, i) => {
           return <option key={i} value={gen.name}>{`${gen.name}`}</option>;
         })}
       </select>
-         
-      <summary>Origin</summary>
+
       <select onChange={handlerFilterOrg}>
-        <option value="All">X</option>
+        <option value="All">Filter by Source</option>
         <option value="string">DataBase</option>
         <option value="number">API</option>
       </select>
-      </details>
-      
-      
-      
     </div>
   );
 };

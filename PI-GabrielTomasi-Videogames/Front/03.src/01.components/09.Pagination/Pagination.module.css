@@ -1,49 +1,104 @@
-.pagination {
-  
-    display: flex;
-  justify-content: center;
+.paginationcontainer {
+  display: flex;
+  justify-content:center;
   align-items: center;
-  margin-top: 20px;
-  font-size: 40px;
-  }
-
-  .pagination button {
- 
-    background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  padding: 5px 10px;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease whidth 0.5s ease;
   
-  }
-  .pagination button:hover {
-    width: 50px;
-    background-color: #000000;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-  }
+  width: 100%;
+  height: 30px;
+  margin-top: 15px;
+}
+.prevnextconteiner {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  
+  height: 100%;
+  width: 80px;
+  margin: 0px 5px;
 
-  .pagination button:focus {
-    width: 50px;
-    background-color: #000000;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-  }
-  .pagination .active {
-    
-    min-width: 200px;
-    background-color:#007bff;
-    border: 2px solid #ffffff;
-   
-  }
+  text-align: center;
+  font-size: small;
+  text-align: center;
+}
 
-  .pagination button:disabled {
-    background-color:#fffbfb;
-    color: #0056b3;
-    font-size: 30px;
-    border: 2px solid #007bff;
-  }
 
+.numberpage {
+  display: flex;
+  height: inherit;
+  width: inherit;
+
+  align-items: center;
+  justify-content: space-around;
+}
+.pagebutton {
+  width: 40px;
+  height: 100%;
+  margin-right: 5px;
+  
+  background-color: #007bff;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  
+  color: #fff;
+  font-size: small;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.pagebutton:hover {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+
+.pagebutton:focus {
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+.pagebutton.active{
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+.prevButton{
+  width: 100%;
+  height: 100%;
+  
+  background-color: #007bff;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  
+  color: #fff;
+  font-size: small;
+  cursor: pointer;
+}
+
+.nextButton{
+  width: 100%;
+  height: 100%;
+
+  background-color: #007bff;
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+
+  color: #fff;
+  font-size: small;
+  cursor: pointer;
+}
+
+.prevButton:disabled{
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+
+}
+.nextButton:disabled{
+  background-color: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+
+}

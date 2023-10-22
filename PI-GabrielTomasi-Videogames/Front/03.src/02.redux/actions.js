@@ -73,7 +73,6 @@ export const addNewGame = (game) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(endpoint, game);
-      console.log(response);
       if (!response) throw Error("no se hizo el post");
       return dispatch({
         type: ADD_GAME,

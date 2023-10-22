@@ -11,11 +11,11 @@ module.exports = async (
 ) => {
   try {
     const newGame = await Videogame.create({
-      name: name,
-      description: description,
-      background_image: background_image,
-      released: released,
-      rating: rating,
+      name,
+      description,
+      background_image,
+      released,
+      rating,
     });
     if (!newGame) throw Error("no se hizo el jueguito");
 
@@ -28,7 +28,7 @@ module.exports = async (
       const platDB = await Platforms.findOne({where:{name:plat}})
       await newGame.addPlatforms(platDB)
     })
-    if (!newGameGen && !newGamePlat) throw Error("no se hizo el jueguito")
+    if (!newGameGen || !newGamePlat) throw Error("no se hizo el jueguito")
     console.log(newGame);
     return newGame;
   } catch (error) {

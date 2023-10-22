@@ -35,6 +35,7 @@ const Form = () => {
 
   useEffect(()=>{
     setErrors(validation(defineGame, allGames))
+   
   },[defineGame])
 
 
@@ -65,9 +66,10 @@ const Form = () => {
   };
   console.log(defineGame)
 
-  const handlesubmit = () => {
+  const handlesubmit = (event) => {
+      
     dispatch(addNewGame(defineGame))
-    navigate('/home')
+    // navigate('/home')
 
   };
   console.log(errors);
@@ -179,7 +181,7 @@ const Form = () => {
       {errors.genres && <span className={style.validation}>{errors.genres}</span>}
      {
       
-      !errors.name && !errors.description && !errors.genres && !errors.platforms && !errors.released && !errors.background_image && <button type="submit" className={style.formButton}>
+      <button type="submit" className={style.formButton}>
         Submit
       </button>
      }

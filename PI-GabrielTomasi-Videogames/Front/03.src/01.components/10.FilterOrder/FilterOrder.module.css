@@ -1,71 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,700&family=Outfit:wght@100&family=Poppins:wght@100&display=swap");
 
 .filterOrder {
-  
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    font-family: Arial, sans-serif; 
-    align-self: center;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-self: center;
+  width: initial;
+  background-color: #000000;
+  padding-left: 40px;
+}
 
-  .filterOrder details {
-    display: flex;
-    margin: 10px;
-    position: relative;
-    cursor: pointer;
-  }
-  
+.filterOrder h2 {
+  font-size: large;
+  padding: 0;
+  margin-top: 25px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: white;
+}
 
-  .filterOrder summary {
-    content: none;
-    background-color: #007bff;
-    border: solid  #ffffff80 1px;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 50%;
-    
-    cursor: pointer;
-    transition: background-color 0.7s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
- 
-  .filterOrder summary::before {
-    font-size: 2em;
-  
-    transition: background-color 0.3s ease;
-  }
-  
+.filterOrder select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.5s ease;
+}
 
-  .filterOrder summary:hover {
-    background-color: #000000;
-  }
-  
-
-  .filterOrder details[open] summary {
-    background-color: #000000;
-    border-radius: 10%;
-  }
-  
-  .filterOrder details[open] summary:hover {
-    border-radius: 10%;
-    transition: 1s ease-in-out;
-  }
-  .filterOrder select {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 5px;
-    width: 100%;
-    transition: background-color 1s ease;
-  }
-  
-  .filterOrder select:hover{
-    background-color: #000000;
-    color: #fff;
-    
-  }
-
+.filterOrder select:hover {
+  background-color: #000000;
+  color: #fff;
+}
+.filterOrder select:active {
+  background-color: #000000;
+  color: #fff;
+}

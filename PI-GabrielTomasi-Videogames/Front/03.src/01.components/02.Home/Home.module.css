@@ -1,31 +1,47 @@
 .homecontainer {
-
- min-width: 100vw;
+  width: 100vw;
   height: 2000px;
   display: flex;
   flex-direction: column;
-  margin: 50px 50px;
   padding: 25px;
   align-items: center;
   background-image: url(../../assets/wallpaperflare.com_wallpaper1.jpg);
   background-repeat: no-repeat;
   background-position: center;
-
 }
 
-.homecontent {
+.navPag {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  align-items:baseline;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  border-radius: 12px; /* Cambia el color de fondo según tus preferencias */
 }
 
+.filterCards{
+  display: flex;
+  align-items:flex-start;
+  justify-content: space-around;
+  height: 100%;
+  width: 100vw;
+  margin-top: 25px;
+}
 .cardcontainer {
- 
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  height: 2000px;
+  height: 100vh;
+  width: 90%;
+}
+
+
+.filters{
+  background-color: aliceblue;
+  display: flex;
+  justify-self:center;
+  margin-left: 60px;
+  margin-top: 0px;
+  padding: 0;
 }

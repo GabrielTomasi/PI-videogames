@@ -68,7 +68,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const {
     name,
     description,
@@ -78,16 +78,17 @@ router.post("/", async (req, res) => {
     rating,
     genres,
   } = req.body;
+
   try {
     if (
       !name ||
       !description ||
       !platforms ||
-      !background_image ||
       !released ||
-      !rating
+      !rating ||
+      !genres
     )
-      res.status(400).send("informacion insuficiente");
+      return res.status(400).send("informacion insuficiente");
     const newGame = await postGames(
       name,
       description,

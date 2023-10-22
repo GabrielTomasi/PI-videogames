@@ -1,5 +1,6 @@
 import style from "./Home.module.css";
 import Card from "../07.Card/Card";
+import Nav from "../03.Nav/Nav";
 import Pagination from "../09.Pagination/Pagination";
 import FilterOrder from "../10.FilterOrder/FilterOrder";
 import { useState, useEffect } from "react";
@@ -10,6 +11,7 @@ import {
   orderGames,
   filterGames,
   filterGamesOrg,
+  searchByName
 } from "../../02.redux/actions";
 
 const Home = ({ handlePageChange }) => {
@@ -63,22 +65,31 @@ const Home = ({ handlePageChange }) => {
   const handlerFilterOrg = (event) => {
     dispatch(filterGamesOrg(event.target.value));
   };
+  const onSearch = (name) => {
+    name === "" ? dispatch(gamesList()) : dispatch(searchByName(name));
+  };
 
   return (
     <div className={style.homecontainer}>
-      <div className={style.homecontent}>
+      <div className={style.navPag}>
+        <Nav onSearch={onSearch} />
         <Pagination
           currentPage={currentPage}
           totalPage={totalPage}
           onPageChange={handlePageChange}
         />
+      </div>
+      <div className={style.filterCards}>
+
+      <div className={style.filters}>
         <FilterOrder
           handleOrder={handleOrder}
           handlerFilter={handlerFilter}
           handlerFilterOrg={handlerFilterOrg}
         />
       </div>
-      <div className={style.cardcontainer}>{renderCard} </div>
+        <div className={style.cardcontainer}>{renderCard} </div>
+      </div>
     </div>
   );
 };
