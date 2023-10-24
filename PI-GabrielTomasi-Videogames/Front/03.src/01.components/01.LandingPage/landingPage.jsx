@@ -25,7 +25,9 @@ const LandingPage = () => {
       <div className={style.firefly}></div>
       {/* <img className={style.image}src={image} alt="image"/> */}
       <NavLink to="/home" className={style.NavLink}>
-        <button className={style.button}>Home</button>
+        <button className={style.button}>
+          <div className={style.neontext}>VIDEOGAMES</div>
+        </button>
       </NavLink>
     </div>
   );
