@@ -83,7 +83,7 @@ const Form = () => {
     </nav>
     <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
-        Game Name
+  Name
         <input
         className={style.formInput}
           type="text"
@@ -121,7 +121,7 @@ const Form = () => {
       {errors.background_image && <span className={style.validation}>{errors.background_image}</span>}
       <br />
       <label htmlFor="released" className={style.formLabel}>
-        Release Date
+        Release
         <input
           type="date"
           name="released"
@@ -152,14 +152,15 @@ const Form = () => {
           {plats?.map((p, i) => {
             return (
               <label key={i} className={style.formLabel}>
-                {p.name}
+                  {p.name}
                 <input
                   className={style.formInput}
                   type="checkbox"
                   name="platforms"
                   value={p.name}
                   onChange={handleChange}
-                />
+                  />
+                
               </label>
             );
           })}
