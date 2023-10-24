@@ -71,6 +71,7 @@ const Home = ({ handlePageChange }) => {
 
   return (
     <div className={style.homecontainer}>
+
       <div className={style.navPag}>
         <Nav onSearch={onSearch} />
         <Pagination
@@ -81,13 +82,13 @@ const Home = ({ handlePageChange }) => {
       </div>
       <div className={style.filterCards}>
 
-      <div className={style.filters}>
+      <aside className={style.filters}>
         <FilterOrder
           handleOrder={handleOrder}
           handlerFilter={handlerFilter}
           handlerFilterOrg={handlerFilterOrg}
         />
-      </div>
+      </aside>
         <div className={style.cardcontainer}>{renderCard} </div>
       </div>
     </div>

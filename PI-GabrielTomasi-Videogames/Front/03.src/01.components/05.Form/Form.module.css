@@ -1,20 +1,28 @@
-/* Estilo para el formulario */
+
 .form {
   min-width: 100vw;
   height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    justify-content: center;
     color: #fff;
     font-size: 20px;
-    background-image: url(../../assets/wallpaperflare.com_wallpaper1.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-  
   }
   
-  /* Estilo para las etiquetas de formulario */
+  nav{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+  }
+
+  .navConteiner{
+    display: flex;
+    align-items: center;
+    margin-left: 300px;
+  }
+
   label {
     display: flex;
     align-items: center;
@@ -22,37 +30,42 @@
     justify-content: center;
   }
   
-  /* Estilo para los campos de entrada de texto y textarea */
+
   .formInput{
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
     margin-bottom: 10px;
     width: 100%;
   }
   .formTextarea {
     padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
     margin-bottom: 10px;
     width: 500px;
     height: 100px;
   }
   
-  /* Estilo para el botón de submit */
-  .formButton {
+
+  .linkbutton {
+    display: flex;
+    justify-self: center;
+    height: auto;
     background-color: #007bff;
     color: #fff;
+    margin: 10px;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: initial;
   }
   
-  /* Efecto hover en el botón de submit */
-  .formButton:hover {
-    background-color: #0056b3;
+  .linkbutton:hover {
+    background-color: #000000;
+    border: #fff 1px solid;
   }
 
   .containerplats{
@@ -61,6 +74,15 @@
     max-height: 200px; 
   overflow-y: scroll;
   justify-items: center;
+  }
+  .buttonconteiner {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 10px;
+    border-radius: 12px;
+    width: auto;
+    height: auto;
   }
 
   details{
@@ -73,6 +95,7 @@
   }
 
   .validation{
-    color: rgb(255, 230, 0);
-    font-size: 20px;
+    color: rgba(255, 0, 0, 0.774);
+    font-size: 15px;
+
   }

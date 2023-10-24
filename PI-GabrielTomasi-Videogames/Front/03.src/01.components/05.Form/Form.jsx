@@ -5,6 +5,7 @@ import { addNewGame } from "../../02.redux/actions";
 import { useDispatch } from "react-redux";
 import { validation } from "../../../validation";
 import { useNavigate } from "react-router-dom";
+import Nav from "../03.Nav/Nav";
 const Form = () => {
   const navigate = useNavigate()
  
@@ -73,11 +74,18 @@ const Form = () => {
 
   };
   console.log(errors);
-  return (
+  return (<div>
+    <nav>
+      <div className={style.navConteiner}>
+
+      <Nav />
+      </div>
+    </nav>
     <form className={style.form} onSubmit={handlesubmit}>
       <label htmlFor="name" className={style.formLabel}>
         Game Name
         <input
+        className={style.formInput}
           type="text"
           name="name"
           value={defineGame.name}
@@ -102,6 +110,7 @@ const Form = () => {
       <label htmlFor="background_image" className={style.formLabel}>
         Image
         <input
+        className={style.formInput}
           type='url'
           name="background_image"
           value={defineGame.background_image}
@@ -127,6 +136,7 @@ const Form = () => {
       <label htmlFor="background_image" className={style.formLabel}>
         Rating
         <input
+        className={style.formInput}
           type='number'
           min= '0'
           max='5'
@@ -180,12 +190,15 @@ const Form = () => {
       </details>
       {errors.genres && <span className={style.validation}>{errors.genres}</span>}
      {
-      
-      <button type="submit" className={style.formButton}>
+      <div className={style.buttonconteiner}>
+
+      <button type="submit" className={style.linkbutton}>
         Submit
       </button>
+      </div>
      }
     </form>
+    </div>
   );
 };
 

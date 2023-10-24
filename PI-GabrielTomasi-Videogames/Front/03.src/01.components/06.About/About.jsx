@@ -1,12 +1,16 @@
 import image from '../../assets/aboutimage.png'
 import style from './About.module.css'
+import Nav from '../03.Nav/Nav';
 const About = () => {
     return (
       <div className={style.conteiner}>
-        {/* <img className={style.img}src={image} alt="Mi Imagen" /> */}
-        <div >
+        <nav>
+        <Nav />
+        </nav>
+      
+        <div className={style.textconteiner}>
           <h2>ABOUT ME</h2>
-          <div className={style.textconteiner}>
+          <div >
 
           <p>
             ¡Hola! Soy Gabriel Tomasi, un apasionado desarrollador de software

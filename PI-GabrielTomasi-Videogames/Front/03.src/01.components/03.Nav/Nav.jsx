@@ -8,7 +8,7 @@ const Nav = ({ onSearch }) => {
     <nav className={style.nav}>
       <div className={style.navconteiner}>
         {location.pathname === "/home" && (
-          <div className={style.SearchBar}>
+         onSearch && <div className={style.SearchBar}>
             <SearchBar onSearch={onSearch} />
           </div>
         )}
