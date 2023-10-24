@@ -21,6 +21,7 @@
   .navConteiner{
     display: flex;
     align-items: center;
+    margin-top: 25px;
     margin-left: 300px;
   }
 

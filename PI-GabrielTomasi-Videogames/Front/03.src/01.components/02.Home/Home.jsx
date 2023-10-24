@@ -17,6 +17,7 @@ import {
 const Home = ({ handlePageChange }) => {
   const dispatch = useDispatch();
   const [games, setGames] = useState([]);
+  
   const allGames = useSelector((state) => state.allGames);
   useEffect(() => {
     axios
@@ -41,7 +42,6 @@ const Home = ({ handlePageChange }) => {
   const endIndex = startIndex + gamesPerPage;
   const currentGames = allGames.slice(startIndex, endIndex);
  
-  console.log(currentGames);
 
   const renderCard = currentGames?.map((game, index) => {
     return (

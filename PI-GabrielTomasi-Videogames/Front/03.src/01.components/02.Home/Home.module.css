@@ -1,10 +1,12 @@
 .homecontainer {
   width: 100vw;
-  height: 100%;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   padding: 25px;
   align-items: center;
+  overflow:scroll;
+  margin-bottom: 30px;
 }
 
 .navPag {

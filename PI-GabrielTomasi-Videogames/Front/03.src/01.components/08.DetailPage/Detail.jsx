@@ -4,21 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { detailPage } from "../../02.redux/actions";
 import style from "./Detail.module.css";
-const Detail = () => {
-  const { id } = useParams();
+const Detail = ({id, toggle, setToggle}) => {
+  //const { id } = useParams();
   const dispatch = useDispatch();
   const regexReplace = /<\/?[^>]+(>|$)/g;
   useEffect(() => {
     dispatch(detailPage(id));
   }, []);
   const gameDetail = useSelector((state) => state.detail);
-  const detailDesciption = gameDetail?.description?.replace(regexReplace, '')
+  const detailDesciption = gameDetail?.description?.replace(regexReplace, "");
   const gen = gameDetail?.genres?.map((genre, i) => {
-    return (
-      <div key={i} className={style.platformGenreItem}>
-        <h5>{genre?.name}</h5>
-      </div>
-    );
+    return <h5 key={i}>{genre?.name}</h5>;
   });
   const plat = gameDetail?.platforms?.map((platform, i) => {
     let name = "";
@@ -26,73 +22,79 @@ const Detail = () => {
     else {
       name = platform.name;
     }
-
-    return (
-      <div key={i} className={style.platformGenreItem}>
-        <h5>{name}</h5>
-      </div>
-    );
+    console.log(gameDetail);
+    return <h5 key={i}>{name}</h5>;
   });
+  const handlerclick = ()=>{
+    setToggle(!toggle)
+  }
   return (
     <div className={style.detailContainer}>
-      <div className={style.leftSection}>
-      <h2>{gameDetail?.name}</h2>
-        <div>
-          <img src={gameDetail?.background_image} alt={gameDetail?.name} />
-        </div>
-        <div>
-          <h3>DESCRIPTION</h3>
+      <button className={style.closebutton} onClick={handlerclick}>X</button>
+      <div className={style.wrapper}>
+        <div className={style.imgconteiner}>
+          <h2>{gameDetail.name}</h2>
+          <img src={gameDetail.background_image}/>
           <p>{detailDesciption}</p>
-          <h3>RELEASE DATE</h3>
-          <p>{gameDetail?.released}</p>
         </div>
-      </div>
-      <div className={style.rightSection}>
-        <div>
-          <h3>PLATAFORMS</h3>
-          <div className={style.platformGenreList}>{plat}</div>
-        </div>
-        <div>
-          <h3>GENERES</h3>
-          <div className={style.platformGenreList}>{gen}</div>
-        </div>
-        <div >
-          <h3>RATING</h3>
-          <p >{gameDetail?.rating}</p>
+        <div className={style.textconteiner}>
+          <div className={style.platGenContainer}>
+
+          <div className={style.platforms}>
+            <h3>Platforms</h3>
+            <div className={style.plat}>{plat}</div>
+            
+          </div>
+          <div className={style.genres}>
+            <h3>Genres</h3>
+            <div className={style.genr}>{gen}</div>
+          </div>
+          </div>
+          <div className={style.ratingReleaseContainer}>
+
+          <div className={style.rating}>
+            <h3>Rating</h3>
+            <div className={style.rat}>{gameDetail.rating}</div>
+          </div>
+          <div className={style.released}>
+            <h3>Realease </h3>
+            <div className={style.rel}>{gameDetail.released}</div>
+          </div>
+          </div>
         </div>
       </div>
     </div>
+    // <div className={style.detailContainer}>
+    //   <div className={style.wrapper}>
+    //     <div className={style.imgconteiner}>
+    //       <h2>{gameDetail?.name}</h2>
+    //       <img src={gameDetail?.background_image} alt={gameDetail?.name} />
+    //       <div>
+    //         <h3>DESCRIPTION</h3>
+    //         <p>{detailDesciption}</p>
+    //         <h3>RELEASE DATE</h3>
+    //         <p>{gameDetail?.released}</p>
+    //       </div>
+    //     </div>
+    //     <div className={style.textconteiner}>
+    //       <h3>PLATAFORMS</h3>
+    //       {plat}
+    //     <div className={style.genresconteiner}>
+    //       <h3>GENERES</h3>
+    //       {gen}
+    //     </div>
+    //     <div>
+    //       <h3>RATING</h3>
+    //       <p>{gameDetail?.rating}</p>
+    //     </div>
+    //     </div>
+    //   </div>
 
-    
+    //   {/* </div>
+    //     <div className={style.rightSection}>
+    //        */}
+    // </div>
   );
 };
 
 export default Detail;
-
-
-// <div className={style.detailcontainer}>
-    //   <h2>{gameDetail?.name}</h2>
-    //   <div className={style.imgcontainer}>
-    //     <img src={gameDetail?.background_image} alt={gameDetail?.name} />
-    //   </div>
-    //   <div className={style.infocontainer}>
-    //     <h3>DESCRIPCION</h3>
-    //     <p>{`${gameDetail?.description}`}</p>
-    //     <h3>FECHA DE LANZAMIENTO</h3>
-    //     <p>{gameDetail?.released}</p>
-    //   </div>
-    //   <div className={style.labelcontainer}>
-    //     <div className={style.platformscontainer}>
-    //       <h3>PLATAFORMAS</h3>
-    //       <div className={style.platformgenreitem}>{plat}</div>
-    //     </div>
-    //     <div className={style.genrescontainer}>
-    //       <h3>GENEROS</h3>
-    //       <div className={style.platformgenreitem}>{gen}</div>
-    //     </div>
-    //   </div>
-    //   <div className={style.ratingcontainer}>
-    //     <h3>RATING</h3>
-    //     <p>{gameDetail?.rating}</p>
-    //   </div>
-    // </div>
