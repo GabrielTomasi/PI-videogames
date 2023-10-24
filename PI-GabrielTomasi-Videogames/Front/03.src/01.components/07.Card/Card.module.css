@@ -118,6 +118,11 @@
   font-size: initial;
 }
 
+.detailbutton:hover {
+  background-color: #000000;
+  border: #fff 1px solid;
+}
+
 .modal{
   display: flex;
   align-self: center;
